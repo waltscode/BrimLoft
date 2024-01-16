@@ -150,4 +150,4 @@ Monitoring and Feedback
 - Iterative Improvements
 
 Plan for future iterations based on feedback.
-Regularly update and maintain the application to ensure it stays functional and relevant.
+Regularly update and maintain the application to ensure it stays functional and relevant

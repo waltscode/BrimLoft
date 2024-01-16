@@ -1,12 +1,16 @@
+/*
+ * This file defines the Category model, with the fields id (primary key) and category_name.
+ * The model is initialized using Sequelize and connected to the database through the sequelize instance.
+ * In the big picture having this table enables grouping of products, useful for searching and browsing by category.
+ * There is a list of products that can be turned up with the same category_id. 
+ */
 const { Model, DataTypes } = require('sequelize');
-
 const sequelize = require('../config/connection.js');
 
 class Category extends Model {}
 
 Category.init(
   {
-    // define columns CORRESPONDING TO THE CATEGORY SEEDED DATA - example: category_name: 'Shirts'
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,

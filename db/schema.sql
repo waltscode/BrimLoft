@@ -1,3 +1,5 @@
+
+
 DROP DATABASE IF EXISTS hatStore_db;
 CREATE DATABASE hatStore_db;
 

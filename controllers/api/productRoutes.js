@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Product, Category, Tag, ProductTag } = require('../../models');
+const { Product, Category } = require('../../models');
 
 // The `/api/products` endpoint
 // find all products
@@ -14,8 +14,8 @@ router.get('/', (req, res) => {
             attributes: ['category_name']
         },
         {
-            model: Tag,
-            attributes: ['tag_name']
+            model: Product,
+            attributes: ['name']
         }
         ]
     }).then(productData => {
@@ -38,8 +38,8 @@ router.get('/:id', (req, res) => {
             attributes: ['category_name']
         },
         {
-            model: Tag,
-            attributes: ['tag_name']
+            model: Product,
+            attributes: ['name']
         }
         ]
     }).then(productData => {
@@ -55,15 +55,12 @@ router.get('/:id', (req, res) => {
 // create new product
 
 router.post('/', (req, res) => {
-    Product.create(req.body)
-    .then(productData => {
+    Product.create(req.body).then(productData => {
         res.json(productData);
-    }
-    ).catch(err => {
+    }).catch(err => {
         console.log(err);
         res.status(500).json(err);
-    }
-    );
+    });
     }
 );
 

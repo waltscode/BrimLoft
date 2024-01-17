@@ -1,7 +1,7 @@
-# Database Schema and Relationships for HatStore
+# Database Schema and Relationships for hatshoppe
 
 ## Overview
-This document outlines the database schema and the relationships between different tables in the `hatStore_db` for the HatStore online application.
+This document outlines the database schema and the relationships between different tables in the `hatshoppe_db` for the HatStore online application.
 
 ## Database Schema
 

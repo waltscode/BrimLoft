@@ -1,10 +1,10 @@
 
 
-DROP DATABASE IF EXISTS hatStore_db;
-CREATE DATABASE hatStore_db;
+DROP DATABASE IF EXISTS hatshoppe_db;
+CREATE DATABASE hatshoppe_db;
 
--- Use the hatStore_db database
-USE hatStore_db;
+-- Use the hatshoppe_db database
+USE hatshoppe_db;
 
 -- Drop tables if they already exist
 DROP TABLE IF EXISTS Users, Categories, Products, Orders, OrderItems, ShoppingCarts, CartItems, Reviews;

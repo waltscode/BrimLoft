@@ -52,7 +52,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     // create a new order
-    Order.create(req.body)
+    Order.create({...req.body, user_id: req.session.user_id})
     .then(orderData => {
         res.json(orderData);
     }

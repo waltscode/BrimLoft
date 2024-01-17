@@ -10,6 +10,8 @@ const Product = require('./Product');
 const OrderItem = require('./OrderItem');
 const Order = require('./Order');
 const Review = require('./Review');
+const ShoppingCart = require('./ShoppingCart');
+const CartItem = require('./CartItem');
 
 // Define associations
 User.hasMany(Order, {
@@ -61,6 +63,35 @@ Product.hasMany(Review, {
   foreignKey: 'product_id',
 });
 
-module.exports = { User, Category, Product, OrderItem, Order, Review };
+//Relationships for ShoppingCart
+User.hasOne(ShoppingCart, {
+  foreignKey: 'user_id',
+});
+
+ShoppingCart.belongsTo(User, {
+  foreignKey: 'user_id',
+});
+
+//Relationships for CartItem
+ShoppingCart.hasMany(CartItem, {
+  foreignKey: 'cart_id',
+});
+
+CartItem.belongsTo(ShoppingCart, {
+  foreignKey: 'cart_id',
+  onDelete: 'CASCADE',
+});
+
+CartItem.belongsTo(Product, {
+  foreignKey: 'product_id',
+});
+
+Product.hasMany(CartItem, {
+  foreignKey: 'product_id',
+});
+
+
+
+module.exports = { User, Category, Product, OrderItem, Order, Review, ShoppingCart, CartItem };
 
 

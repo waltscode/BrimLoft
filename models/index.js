@@ -10,8 +10,12 @@ const Product = require('./Product');
 const OrderItem = require('./OrderItem');
 const Order = require('./Order');
 const Review = require('./Review');
-const ShoppingCart = require('./ShoppingCart');
 const CartItem = require('./CartItem');
+const ProductTag = require('./ProductTag');
+const Tag = require('./Tag');
+
+
+
 
 // Define associations
 User.hasMany(Order, {
@@ -45,6 +49,19 @@ OrderItem.belongsTo(Product, {
 
 Product.hasMany(OrderItem, {
   foreignKey: 'product_id',
+});
+
+// Products belongToMany Tags (through ProductTag)
+Product.belongsToMany(Tag, {
+  through: ProductTag,
+  foreignKey: 'product_id',
+});
+
+
+// Tags belongToMany Products (through ProductTag)
+Tag.belongsToMany(Product, {
+  through: ProductTag,
+  foreignKey: 'tag_id',
 });
 
 Review.belongsTo(User, {

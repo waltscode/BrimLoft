@@ -1,9 +1,8 @@
+//John's code
 const express = require('express');
 const router = express.Router();
 const { Order, Product, User } = require('../../models');
-
 // The `/api/orders` endpoint
-
 router.get('/', (req, res) => {
     // find all orders
     // be sure to include its associated Products
@@ -26,7 +25,6 @@ router.get('/', (req, res) => {
     });
     }
 );
-
 router.get('/:id', (req, res) => {
     // find one order by its `id` value
     // be sure to include its associated Products
@@ -50,9 +48,7 @@ router.get('/:id', (req, res) => {
     }
 );
 
-router.post('/', (req, res) => {
-    // create a new order
-    Order.create({...req.body, user_id: req.session.user_id})
+router.post('/', (req, res) => {Order.create({...req.body, user_id: req.session.user_id})
     .then(orderData => {
         res.json(orderData);
     }
@@ -62,7 +58,6 @@ router.post('/', (req, res) => {
     });
     }
 );
-
 router.put('/:id', (req, res) => {
     // update a order by its `id` value
     Order.update(req.body, {
@@ -82,7 +77,6 @@ router.put('/:id', (req, res) => {
     });
     }
 );
-
 router.delete('/:id', (req, res) => {
     // delete a order by its `id` value
     Order.destroy({
@@ -102,7 +96,4 @@ router.delete('/:id', (req, res) => {
     });
     }
 );
-
 module.exports = router;
-
-

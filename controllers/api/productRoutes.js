@@ -1,3 +1,4 @@
+//John's code
 const express = require('express');
 const router = express.Router();
 const { Product, Category } = require('../../models');
@@ -11,11 +12,11 @@ router.get('/', (req, res) => {
         include: [
         {
             model: Category,
-            attributes: ['category_name']
+            attributes: ['category_name', 'quote', 'description']
         },
         {
             model: Product,
-            attributes: ['name']
+            attributes: ['id', 'name', 'description', 'price', 'image1_url', 'num_in_stock', 'rating', 'num_of_reviews', 'is_featured', 'category_id']
         }
         ]
     }).then(productData => {
@@ -39,7 +40,7 @@ router.get('/:id', (req, res) => {
         },
         {
             model: Product,
-            attributes: ['name']
+            attributes: ['id', 'name', 'quote', 'description', 'price', 'image1_url', 'image2_url', 'image3_url', 'image4_url', 'image5_url', 'num_in_stock', 'rating', 'num_of_reviews', 'is_featured', 'category_id']
         }
         ]
     }).then(productData => {

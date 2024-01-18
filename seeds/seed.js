@@ -1,10 +1,10 @@
+//NOte this file is a placeholder, copied and pasted in from miniproject 14.  Needs to be rewritten.
+
 const sequelize = require('../config/connection');
-const { User, Project  } = require('../models');
-const {Tag} = require('../models');
+const { User, Project } = require('../models');
 
 const userData = require('./userData.json');
 const projectData = require('./projectData.json');
-const tagData = require('./tagData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });

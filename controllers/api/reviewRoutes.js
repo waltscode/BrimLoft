@@ -1,3 +1,4 @@
+//John's code
 const express = require('express');
 const router = express.Router();
 const { Review, User, Product } = require('../../models');
@@ -34,7 +35,7 @@ router.get('/:id', (req, res) => {
         include: [
         {
             model: Product,
-            attributes: ['product_name', 'price', 'stock', 'category_id']
+            attributes: ['name', 'price', 'num_in_stock', 'category_id']
         },
         {
             model: User,

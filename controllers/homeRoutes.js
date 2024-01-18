@@ -1,4 +1,4 @@
-const router = require('express').Router();
+// This file still needs to be edited.  It has been pasted in from miniproject 14  const router = require('express').Router();
 const { Project, User } = require('../models');
 const withAuth = require('../utils/auth');
 

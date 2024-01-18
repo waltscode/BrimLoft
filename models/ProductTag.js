@@ -1,13 +1,18 @@
+/*
+* This file defines the ProductTag model, serving as a junction table to establish many-to-many relationships
+* between the Product and Tag models (ie. multiple tags can be associated with a single product and a tag can be linked to multiple products).
+* By associating of product_id with tag_id enables the grouping of products by tag -- useful for filters and searches
+* The model is initialized using Sequelize and connected to the database through the sequelize instance.
+*/ 
 const { Model, DataTypes } = require('sequelize');
-
+// import our database connection from config.js
 const sequelize = require('../config/connection');
 
 class ProductTag extends Model {}
 
+//Set up fields ie columns and rules for ProductTag model 
 ProductTag.init(
   {
-    // define columns CORRESPONDING TO THE PRODUCT TAG SEEDED DATA - example: product_id: 1, tag_id: 6
-    
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -16,16 +21,14 @@ ProductTag.init(
     },
     product_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      references:{
+      references: {
         model: 'product',
         key: 'id',
       },
     },
     tag_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      references:{
+      references: {
         model: 'tag',
         key: 'id',
       },

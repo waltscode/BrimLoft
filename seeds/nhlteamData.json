@@ -1,0 +1,22 @@
+[
+    {
+      "team_name": "Montreal Canadiens",
+      "team_logo_url": "https://a.storyblok.com/f/132956/500x400/2c923017b9/montreal-canadiens.png/m/fit-in/34x28/filters:quality(75)"
+    },
+    {
+      "team_name": "Toronto Maple Leafs",
+      "team_logo_url": "https://a.storyblok.com/f/132956/500x400/90fff54c0d/toronto-maple-leafs.png/m/fit-in/34x28/filters:quality(75)"
+    },
+    {
+      "team_name": "Calgary Flames",
+      "team_logo_url": "https://a.storyblok.com/f/132956/500x400/931f9506d7/calgary-flames.png/m/fit-in/34x28/filters:quality(75)"
+    },
+    {
+      "team_name": "Edmonton Oilers",
+      "team_logo_url": "https://a.storyblok.com/f/132956/500x400/dc2bfeb3b5/edmonton-oilers.png/m/fit-in/34x28/filters:quality(75)"
+    },
+    {
+      "team_name": "Vancouver Canucks",
+      "team_logo_url": "https://a.storyblok.com/f/132956/500x400/092fd5026c/vancouver-canucks.png/m/fit-in/34x28/filters:quality(75)"
+    }
+  ]

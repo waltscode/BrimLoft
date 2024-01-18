@@ -10,12 +10,9 @@ const Product = require('./Product');
 const OrderItem = require('./OrderItem');
 const Order = require('./Order');
 const Review = require('./Review');
-const CartItem = require('./CartItem');
-const ProductTag = require('./ProductTag');
 const Tag = require('./Tag');
-
-
-
+const ProductTag = require('./ProductTag');
+const NHLTeam = require('./NHLTeam');
 
 // Define associations
 User.hasMany(Order, {
@@ -51,19 +48,6 @@ Product.hasMany(OrderItem, {
   foreignKey: 'product_id',
 });
 
-// Products belongToMany Tags (through ProductTag)
-Product.belongsToMany(Tag, {
-  through: ProductTag,
-  foreignKey: 'product_id',
-});
-
-
-// Tags belongToMany Products (through ProductTag)
-Tag.belongsToMany(Product, {
-  through: ProductTag,
-  foreignKey: 'tag_id',
-});
-
 Review.belongsTo(User, {
   foreignKey: 'user_id',
 });
@@ -80,35 +64,27 @@ Product.hasMany(Review, {
   foreignKey: 'product_id',
 });
 
-//Relationships for ShoppingCart
-User.hasOne(ShoppingCart, {
-  foreignKey: 'user_id',
-});
-
-ShoppingCart.belongsTo(User, {
-  foreignKey: 'user_id',
-});
-
-//Relationships for CartItem
-ShoppingCart.hasMany(CartItem, {
-  foreignKey: 'cart_id',
-});
-
-CartItem.belongsTo(ShoppingCart, {
-  foreignKey: 'cart_id',
-  onDelete: 'CASCADE',
-});
-
-CartItem.belongsTo(Product, {
+Product.belongsToMany(Tag, { //product_tag is a junction table that will associate product_ids with tag_ids
+  through: 'product_tag',
   foreignKey: 'product_id',
 });
 
-Product.hasMany(CartItem, {
-  foreignKey: 'product_id',
+Tag.belongsToMany(Product, {
+  through: 'product_tag',
+  foreignKey: 'tag_id',
 });
 
+NHLTeam.belongsToMany(Tag, { // NHLTeam can have multiple tags
+  through: 'nhl_team_tag',
+  foreignKey: 'nhl_team_id',
+});
 
+Tag.belongsToMany(NHLTeam, { // Tag can be associated with multiple NHL teams
+  through: 'nhl_team_tag',
+  foreignKey: 'tag_id',
+});
 
-module.exports = { User, Category, Product, OrderItem, Order, Review, ShoppingCart, CartItem };
+module.exports = { User, Category, Product, OrderItem, Order, Review, Tag, ProductTag, NHLTeam };
+
 
 

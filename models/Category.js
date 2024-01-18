@@ -6,6 +6,7 @@
  */
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
+const League = require('./League.js'); // Import the League model
 
 class Category extends Model {}
 
@@ -21,7 +22,8 @@ Category.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-  },
+   
+      },
   {
     sequelize,
     timestamps: false,

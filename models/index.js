@@ -10,12 +10,13 @@ const Product = require('./Product');
 const OrderItem = require('./OrderItem');
 const Order = require('./Order');
 const Review = require('./Review');
-const CartItem = require('./CartItem');
 const ProductTag = require('./ProductTag');
 const Tag = require('./Tag');
-
-
-
+const League = require('./League');
+const NhlTeams = require('./NhlTeams');
+const NflTeams = require('./NflTeams');
+const NbaTeams = require('./NbaTeams');
+const MlbTeams = require('./MlbTeams');
 
 // Define associations
 User.hasMany(Order, {
@@ -32,6 +33,10 @@ Product.belongsTo(Category, {
 
 Category.hasMany(Product, {
   foreignKey: 'category_id',
+});
+
+League.hasMany(User, {
+  foreignKey: 'league_id',
 });
 
 Order.hasMany(OrderItem, {
@@ -80,35 +85,35 @@ Product.hasMany(Review, {
   foreignKey: 'product_id',
 });
 
-//Relationships for ShoppingCart
-User.hasOne(ShoppingCart, {
-  foreignKey: 'user_id',
+NhlTeams.belongsTo(League, {
+  foreignKey: 'league_id',
 });
 
-ShoppingCart.belongsTo(User, {
-  foreignKey: 'user_id',
+NflTeams.belongsTo(League, {
+  foreignKey: 'league_id',
 });
 
-//Relationships for CartItem
-ShoppingCart.hasMany(CartItem, {
-  foreignKey: 'cart_id',
+NbaTeams.belongsTo(League, {
+  foreignKey: 'league_id',
 });
 
-CartItem.belongsTo(ShoppingCart, {
-  foreignKey: 'cart_id',
-  onDelete: 'CASCADE',
+MlbTeams.belongsTo(League, {
+  foreignKey: 'league_id',
 });
 
-CartItem.belongsTo(Product, {
-  foreignKey: 'product_id',
-});
-
-Product.hasMany(CartItem, {
-  foreignKey: 'product_id',
-});
-
-
-
-module.exports = { User, Category, Product, OrderItem, Order, Review, ShoppingCart, CartItem };
+module.exports = {
+  User,
+  Category,
+  Product,
+  OrderItem,
+  Order,
+  Review,
+  League,
+  ProductTag,
+  Tag, NhlTeams,
+  NflTeams,
+  NbaTeams,
+  MlbTeams
+};
 
 

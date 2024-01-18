@@ -1,12 +1,13 @@
 {
   "name": "hatshoppe",
   "version": "1.0.0",
-  "description": "",
+  "description": "just to an edit of some kind",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "node seeds/seed.js"
+    "seed": "node seeds/seed.js",
+    "devstart": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +25,7 @@
   "devDependencies": {
     "eslint": "^7.12.1",
     "eslint-config-prettier": "^6.15.0",
+    "nodemon": "^3.0.3",
     "prettier": "^2.1.2"
   }
 }

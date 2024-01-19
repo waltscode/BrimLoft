@@ -1,5 +1,5 @@
 -- DROP DATABASE
-DROP DATABASE IF EXISTS hatshoppe_db;
+DROP DATABASE IF EXISTS brim_loft_db;
 
 -- CREATE DATABASE
-CREATE DATABASE hatshoppe_db;
+CREATE DATABASE brim_loft_db;

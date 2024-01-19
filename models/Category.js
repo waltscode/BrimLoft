@@ -22,8 +22,15 @@ Category.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-   
-      },
+    quote: {
+      type: DataTypes.TEXT, 
+      allowNull: true, 
+    },
+    description: {
+      type: DataTypes.TEXT, 
+      allowNull: true, 
+    },
+  },
   {
     sequelize,
     timestamps: false,

@@ -13,10 +13,8 @@ const Review = require('./Review');
 const ProductTag = require('./ProductTag');
 const Tag = require('./Tag');
 const League = require('./League');
-const NhlTeams = require('./NhlTeams');
-const NflTeams = require('./NflTeams');
-const NbaTeams = require('./NbaTeams');
-const MlbTeams = require('./MlbTeams');
+const Teams = require('./Teams');
+
 
 // Define associations
 User.hasMany(Order, {
@@ -35,9 +33,6 @@ Category.hasMany(Product, {
   foreignKey: 'category_id',
 });
 
-League.hasMany(User, {
-  foreignKey: 'league_id',
-});
 
 Order.hasMany(OrderItem, {
   foreignKey: 'order_id',
@@ -84,21 +79,24 @@ Product.hasMany(Review, {
   foreignKey: 'product_id',
 });
 
-NhlTeams.belongsTo(League, {
+// this is the teams correlations to products and leagues
+Teams.belongsTo(League, {
   foreignKey: 'league_id',
 });
 
-NflTeams.belongsTo(League, {
+League.hasMany(Teams,  {
   foreignKey: 'league_id',
 });
 
-NbaTeams.belongsTo(League, {
-  foreignKey: 'league_id',
+Product.belongsTo(Teams, {
+  foreignKey: 'team_id',
 });
 
-MlbTeams.belongsTo(League, {
-  foreignKey: 'league_id',
+Teams.hasMany(Product, {
+  foreignKey: 'team_id',
 });
+
+
 
 module.exports = {
   User,
@@ -109,10 +107,8 @@ module.exports = {
   Review,
   League,
   ProductTag,
-  Tag, NhlTeams,
-  NflTeams,
-  NbaTeams,
-  MlbTeams
+  Tag, 
+  Teams
 };
 
 

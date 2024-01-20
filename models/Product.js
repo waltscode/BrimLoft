@@ -81,6 +81,14 @@ Product.init(
         key: 'id',
       },
     },
+    team_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'teams',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,

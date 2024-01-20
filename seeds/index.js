@@ -3,10 +3,7 @@ const seedProducts = require('./product-seeds');
 const seedTags = require('./tag-seeds');
 // const seedProductTags = require('./product-tag-seeds');
 const seedLeagues = require('./league-seeds');
-const seedNhl = require('./nhl-seeds');
-const seedNfl = require('./nfl-seeds');
-const seedNba = require('./nba-seeds');
-const seedMlb = require('./mlb-seeds');
+const seedTeams = require('./teams-seeds');
 const seedUsers = require('./user-seeds.js');
 
 
@@ -33,17 +30,8 @@ const seedAll = async () => {
   await seedLeagues();
   console.log('\n----- LEAGUES SEEDED -----\n');
 
-  await seedNhl();
-  console.log('\n----- NHL TEAMS SEEDED -----\n');
-
-  await seedNfl();
-  console.log('\n----- NFL TEAMS SEEDED -----\n');
-
-  await seedNba();
-  console.log('\n----- NBA TEAMS SEEDED -----\n');
-
-  await seedMlb();
-  console.log('\n----- MLB TEAMS SEEDED -----\n');
+  await seedTeams();
+  console.log('\n----- TEAMS SEEDED -----\n');
 
   process.exit(0);
 };

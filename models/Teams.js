@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class NbaTeams extends Model {}
+class Teams extends Model {}
 
-NbaTeams.init(
+Teams.init(
     {
         id: {
         type: DataTypes.INTEGER,
@@ -15,15 +15,22 @@ NbaTeams.init(
         type: DataTypes.STRING,
         allowNull: false,
         },
+
+        league_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'league',
+                key: 'id',
+            },
+        },
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'nba_teams',
+        modelName: 'teams',
     }
     );
 
-module.exports = NbaTeams;
-
+module.exports = Teams;

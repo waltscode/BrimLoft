@@ -1,6 +1,6 @@
 const { Tag } = require('../models');
 
-const tagSeeds = [
+const tagData = [
   { tag_name: "Plain" },
   { tag_name: "Add pom-pom" },
   { tag_name: "Add applique text/logo" },

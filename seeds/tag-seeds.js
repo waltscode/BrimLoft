@@ -69,13 +69,7 @@ const tagSeeds = [
   { tag_name: "Black with Floral Embroidery #0B080D" },
   { tag_name: "Beige with Floral Embroidery #C3A79A" },
   { tag_name: "Cream with Floral Embroidery #D2CEBD" },
-  
-
-
-
-
-
-  
+  { tag_name: "test"},
   { tag_name: "With Custom Text" },
   { tag_name: "With Custom Logo" },
   { tag_name: "With Custom Text and Logo" },

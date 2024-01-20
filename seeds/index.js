@@ -1,7 +1,7 @@
 const seedCategories = require('./category-seeds');
 const seedProducts = require('./product-seeds');
 const seedTags = require('./tag-seeds');
-// const seedProductTags = require('./product-tag-seeds');
+const seedProductTags = require('./product-tag-seeds');
 const seedLeagues = require('./league-seeds');
 const seedTeams = require('./teams-seeds');
 const seedUsers = require('./user-seeds.js');
@@ -24,8 +24,8 @@ const seedAll = async () => {
   await seedTags();
   console.log('\n----- TAGS SEEDED -----\n');
 
-  // await seedProductTags();
-  // console.log('\n----- PRODUCT TAGS SEEDED -----\n');
+  await seedProductTags();
+  console.log('\n----- PRODUCT TAGS SEEDED -----\n');
 
   await seedLeagues();
   console.log('\n----- LEAGUES SEEDED -----\n');

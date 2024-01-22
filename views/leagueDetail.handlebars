@@ -1,0 +1,10 @@
+{{!-- Provides details about a specific league and its teams --}}
+<h2>{{league.name}} League</h2>
+<div class="teams-in-league">
+  <h3>Teams</h3>
+  {{#each league.Teams}}
+    <div class="team">
+      <h4><a href="/team/{{this.id}}">{{this.name}}</a></h4>
+    </div>
+  {{/each}}
+</div>

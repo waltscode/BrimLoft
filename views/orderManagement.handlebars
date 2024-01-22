@@ -1,0 +1,11 @@
+{{!-- An interface for viewing and updating the status of all orders--}}
+<h1>Order Management</h1>
+<div class="order-list">
+  {{#each orders}}
+    <div class="order">
+      <h3>Order #{{this.id}}</h3>
+      <!-- Details and status update form -->
+      <!-- ... -->
+    </div>
+  {{/each}}
+</div>

@@ -1,0 +1,10 @@
+{{!-- List all categories with a link to view products under each category --}}
+
+<h1>Shop by Category</h1>
+<ul class="category-list">
+  {{#each categories}}
+    <li>
+      <a href="/categories/{{this.id}}">{{this.name}}</a>
+    </li>
+  {{/each}}
+</ul>

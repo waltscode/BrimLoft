@@ -1,0 +1,36 @@
+{{!-- User Profile --}}
+<h2>User Profile: {{user.username}}</h2>
+<div class="user-details">
+  <p>Email: {{user.email}}</p>
+  <p>Address: {{user.address}}</p>
+  <!-- Add more user details here -->
+</div>
+
+<h3>Your Orders:</h3>
+{{#if user.orders}}
+  <ul class="orders-list">
+    {{#each user.orders}}
+      <li>
+        <a href="/order/{{this.id}}">Order #{{this.id}} - {{formatCurrency this.total}}</a>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>You have no orders.</p>
+{{/if}}
+
+<h3>Your Reviews:</h3>
+{{#if user.reviews}}
+  <ul class="reviews-list">
+    {{#each user.reviews}}
+      <li>
+        <p>{{this.content}}</p>
+        <p>Rating: {{this.rating}} stars</p>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>You have not written any reviews.</p>
+{{/if}}
+
+{{!-- Add any additional user-related features here --}}

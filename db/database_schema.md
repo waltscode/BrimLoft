@@ -1,7 +1,7 @@
-# Database Schema and Relationships for hatshoppe
+# Database Schema and Relationships for brim_loft_db
 
 ## Overview
-This document outlines the database schema and the relationships between different tables in the `hatshoppe_db` for the HatStore online application.
+This document outlines the database schema and the relationships between different tables in the `brim_loft_db` for the HatStore online application.
 
 ## Database Schema
 

@@ -10,9 +10,9 @@ const leagueData = [
       {
         league_name: 'MLB',
       },
-        {
-            league_name: 'NBA',
-        },
+      {
+        league_name: 'NBA',
+      },
     ];
 
 const seedLeagues = () => League.bulkCreate(leagueData);

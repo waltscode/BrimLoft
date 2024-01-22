@@ -23,7 +23,7 @@ const userData = [
     default_address: "5061 Churchill Meadows Bvld\nMississauga, ON\nL5M 7Z9",
     username: "SamS1011",
     password: "password123",
-    email: "sdkln102@gmail.com"
+    email: "sanyam.edu@gmail.com"
   },
   {
     first_name: "Nicholas",

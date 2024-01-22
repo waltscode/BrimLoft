@@ -35,6 +35,10 @@ Review.init(
         key: 'id',
       },
     },
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     comment: {
       type: DataTypes.TEXT,
       allowNull: true,
@@ -43,6 +47,11 @@ Review.init(
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW, //Will date/time stamp a review with the current date/time by default
+    },
+    isVerifiedPurchaser: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false, // Default to false to allow for creation of a new review instance with this field, and for a case where it still may be appropriate for a non-verified purchaser to leave a review. In most cases (where corresponding orderitem_ids can be found associated with the user leaving the review) the default value will get changed to true by the dynamic logic in the createReview function (in controllers/api/reviewRoutes.js) 
     },
   },
   {

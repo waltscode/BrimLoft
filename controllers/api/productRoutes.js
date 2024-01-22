@@ -1,31 +1,40 @@
 const express = require('express');
 const router = express.Router();
-const { Product, Category } = require('../../models');
+const { Product, User, Category, Tag, ProductTag, Review, Teams, League } = require('../../models');
 
 // The `/api/products` endpoint
 // find all products
-// be sure to include its associated Category and Tag data
 
-router.get('/', (req, res) => {
-    Product.findAll({
-        include: [
+router.get('/', async (req, res) => {
+  try {
+    const productData = await Product.findAll({
+      include: [
         {
-            model: Category,
-            attributes: ['category_name']
+          model: Category,
+          attributes: ['category_name']
         },
         {
-            model: Product,
-            attributes: ['name']
+          model: Tag,
+          through: ProductTag, 
+          attributes: ['tag_name'] 
+        },
+        {
+          model: Teams, 
+          attributes: ['team_name'] 
+        },
+        {
+          model: League, 
+          attributes: ['league_name'] 
         }
-        ]
-    }).then(productData => {
-        res.json(productData);
-    }).catch(err => {
-        console.log(err);
-        res.status(500).json(err);
+      ]
     });
-    }
-);
+
+    res.json(productData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 // find a single product by its `id`
 // be sure to include its associated Category and Tag data
@@ -40,8 +49,17 @@ router.get('/:id', (req, res) => {
         {
             model: Product,
             attributes: ['name']
+        },
+        {
+            model: Review,
+            include: [
+              {
+                model: User,
+                attributes: ['username'] 
+              }
+            ]
         }
-        ]
+      ]
     }).then(productData => {
         res.json(productData);
     }).catch(err => {

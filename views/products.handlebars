@@ -1,0 +1,23 @@
+{{!-- List of Products --}}
+<h1>Our Products</h1>
+
+<section class="product-list">
+  {{#each products}}
+    <article class="product-item">
+      <img src="{{this.image_url}}" alt="{{this.name}}" class="product-image">
+      <h2 class="product-name"><a href="/product/{{this.id}}">{{this.name}}</a></h2>
+      <p class="product-description">{{this.description}}</p>
+      <p class="product-price">$ {{this.price}}</p>
+      {{#if this.Tags}}
+        <ul class="product-tags">
+          {{#each this.Tags}}
+            <li>{{this.name}}</li>
+          {{/each}}
+        </ul>
+      {{/if}}
+      <a href="/product/{{this.id}}" class="product-detail-link">View Details</a>
+    </article>
+  {{else}}
+    <p>No products found.</p>
+  {{/each}}
+</section>

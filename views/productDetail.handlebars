@@ -1,0 +1,27 @@
+{{!-- Detailed view of a single product, including its reviews, tags, and associated team if applicable--}}
+<div class="product-detail">
+  <img src="{{product.imageUrl}}" alt="{{product.name}}">
+  <h1>{{product.name}}</h1>
+  <p>{{product.description}}</p>
+  <p>Price: {{formatCurrency product.price}}</p>
+  <!-- Tags and Team information -->
+  <div class="product-meta">
+    <p>Tags: {{#each product.tags}} {{this.name}} {{/each}}</p>
+    <p>Team: {{product.team.name}}</p>
+  </div>
+  <!-- Add to Cart functionality if applicable -->
+</div>
+
+<h3>Customer Reviews</h3>
+{{#if product.reviews}}
+  <ul class="reviews">
+    {{#each product.reviews}}
+      <li class="review">
+        <p>Rating: {{this.rating}}</p>
+        <p>{{this.comment}}</p>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>Be the first to review this product!</p>
+{{/if}}

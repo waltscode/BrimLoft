@@ -1,0 +1,9 @@
+{{!-- Shows a list of all teams --}}
+<h1>Teams</h1>
+<div class="team-list">
+  {{#each teams}}
+    <div class="team">
+      <h3><a href="/team/{{this.id}}">{{this.name}}</a></h3>
+    </div>
+  {{/each}}
+</div>

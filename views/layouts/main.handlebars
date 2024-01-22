@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fund My Project!</title>
+  <title>BrimLoft!</title>
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -14,7 +14,7 @@
     <header class="display-flex justify-space-between align-center p-2">
       <h1>
         <span role="img" aria-label="money">💸</span>
-        <a href="/">Fund My Project!</a>
+        <a href="/">BrimLoft</a>
       </h1>
       <nav>
         <!-- Conditionally render login or logout links -->
@@ -30,10 +30,11 @@
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
-    <footer>
-      
+    <footer class="footer">
+      <div class="container text-center">
+        <p>&copy; 2024. BrimLoft Inc. All rights reserved.</p>
+      </div>
     </footer>
-  </div>
 
   <!-- Render script for logged in users only -->
   {{#if logged_in}}

@@ -1,0 +1,12 @@
+{{!-- Show all products within a given category --}}
+<h2>{{category.name}}</h2>
+<div class="products-in-category">
+  {{#each products}}
+    <div class="product">
+      <img src="{{this.imageUrl}}" alt="{{this.name}}">
+      <h3><a href="/product/{{this.id}}">{{this.name}}</a></h3>
+      <p>{{truncate this.description 120}}</p>
+      <p>Price: {{formatCurrency this.price}}</p>
+    </div>
+  {{/each}}
+</div>

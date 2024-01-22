@@ -1,0 +1,9 @@
+{{!-- Product Reviews --}}
+<h2>Reviews for {{productName}}</h2>
+<div class="reviews">
+  {{#each reviews}}
+    <div class="review">
+      <p>{{this.author}}: {{this.content}}</p>
+    </div>
+  {{/each}}
+</div>

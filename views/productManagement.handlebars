@@ -1,0 +1,19 @@
+{{!-- An interface for admins to manage products --}}
+<h1>Product Management</h1>
+<!-- Add/Edit Product Form -->
+<form id="product-form">
+  <!-- Form fields for product details -->
+  <!-- ... -->
+  <button type="submit">Submit</button>
+</form>
+
+<!-- Existing Products List -->
+<div class="existing-products">
+  {{#each products}}
+    <div class="product">
+      <h3>{{this.name}}</h3>
+      <!-- Add buttons or links for edit and delete actions -->
+      <!-- ... -->
+    </div>
+  {{/each}}
+</div>

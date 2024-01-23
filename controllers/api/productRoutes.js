@@ -5,36 +5,56 @@ const { Product, User, Category, Tag, ProductTag, Review, Teams, League } = requ
 // The `/api/products` endpoint
 // find all products
 
-router.get('/', async (req, res) => {
-  try {
-    const productData = await Product.findAll({
-      include: [
-        {
-          model: Category,
-          attributes: ['category_name']
-        },
-        {
-          model: Tag,
-          through: ProductTag, 
-          attributes: ['tag_name'] 
-        },
-        {
-          model: Teams, 
-          attributes: ['team_name'] 
-        },
-        {
-          model: League, 
-          attributes: ['league_name'] 
-        }
-      ]
-    });
+// router.get('/', async (req, res) => {
+//   // try {
+//   //   const productData = await Product.findAll({
+//   //     include: [
+//   //       {
+//   //         model: Category,
+//   //         attributes: ['category_name']
+//   //       },
+//   //       {
+//   //         model: Tag,
+//   //         through: ProductTag, 
+//   //         attributes: ['tag_name'] 
+//   //       },
+//   //       {
+//   //         model: Teams, 
+//   //         attributes: ['team_name'] 
+//   //       },
+//   //       {
+//   //         model: League, 
+//   //         attributes: ['league_name'] 
+//   //       }
+//   //     ]
+//   //   });
 
-    res.json(productData);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
+
+
+//     res.json(productData);
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
+
+
+router.get('/', (req, res) => {
+  Product.findAll({
+      include: [
+      {
+          model: Tag,
+      }
+  ]
+}).then(leagueData => {
+  res.json(leagueData);
+}
+).catch(err => {
+  console.log(err);
+  res.status(500).json(err);
 });
+}
+);
 
 // find a single product by its `id`
 // be sure to include its associated Category and Tag data

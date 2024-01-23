@@ -6,7 +6,7 @@ class ProductTag extends Model {}
 
 ProductTag.init(
   {
-    // define columns CORRESPONDING TO THE PRODUCT TAG SEEDED DATA - example: product_id: 1, tag_id: 6
+    // columns defined CORRESPONDING TO THE PRODUCT TAG SEEDED DATA - example: product_id: 1, tag_id: 6
     
     id: {
       type: DataTypes.INTEGER,

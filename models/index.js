@@ -33,7 +33,6 @@ Category.hasMany(Product, {
   foreignKey: 'category_id',
 });
 
-
 Order.hasMany(OrderItem, {
   foreignKey: 'order_id',
 });

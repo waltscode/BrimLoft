@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const { User } = require('../models');
 
 const userData = [
@@ -21,7 +22,7 @@ const userData = [
     first_name: "Sanyam",
     last_name: "Singh",
     default_address: "5061 Churchill Meadows Bvld\nMississauga, ON\nL5M 7Z9",
-    username: "SamS1011",
+    username: "SamS",
     password: "password123",
     email: "sdkln102@gmail.com"
   },
@@ -243,6 +244,17 @@ const userData = [
   }
 ];
 
-const seedUsers = () => User.bulkCreate(userData);
+const seedUsers = async () => {
+  const saltRounds = 10; 
+
+  // Hash passwords before inserting into the database, this will allow for them to match what is posted in the body for testing.
+  const hashedUsersData = await Promise.all(userData.map(async (user) => {
+    const hashedPassword = await bcrypt.hash(user.password, saltRounds);
+    return { ...user, password: hashedPassword };
+  }));
+
+  // Insert userData with hashed passwords into the database
+  await User.bulkCreate(hashedUsersData);
+};
 
 module.exports = seedUsers;

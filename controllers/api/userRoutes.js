@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+//Route for creating a new user.  Tested in Insomnia by KW.  I created a new user in the database with this (format body as in user-seeds except as json). Full url is http://localhost:3001/api/users/
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
@@ -15,6 +16,11 @@ router.post('/', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+// Route for User Login. Tested in Insomnia by KW. I had to create code in user-seeds.js to hash the passwords seeded in the database.  Only then does the password entered with the req.body match that which is stored in the database. This also verifies that our bcrypting code for user login is working in homeRoutes.js.  I used the url http://localhost:3001/api/users/login and posted {
+  //"email": "kwubbenhorst@gmail.com",
+  //"password": "password789"
+// to test this route.}
 
 router.post('/login', async (req, res) => {
   try {
@@ -47,6 +53,9 @@ router.post('/login', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+//User logout route. Tested in Insomnia by KW by entering a post request to full url: http://localhost:3001/api/users/logout . No req.body required.
+//Something wrong here. I get a 404. Either session expires me or code that controls the flag for logged in: true or some other piece of user authentication is not working properly 
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {

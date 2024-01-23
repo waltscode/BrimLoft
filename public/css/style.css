@@ -22,3 +22,63 @@ header, .project:not(:last-child) {
   font-weight: bold;
   margin-left: -5px;
 }
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4e4d4d;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s;
+  padding: 10px;
+}
+
+a:hover {
+  color: #ffcc00;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  margin: 1;
+  padding-inline-start: 40px;
+}
+
+.cart-button,
+.profile-button {
+    margin-left: 20px;
+    padding: 8px 15px;
+    border: none;
+    background-color: #ffcc00;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cart-button:hover,
+.profile-button:hover {
+  background-color: blue;
+  color: white;
+}
+
+
+footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4e4d4d;
+  color: white;
+}
+
+header {
+  background-color: #302f2f;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}

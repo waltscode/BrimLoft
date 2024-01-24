@@ -37,6 +37,10 @@ const sess = {
 
 app.use(session(sess));
 
+app.get('/', (req, res) => {
+  res.render('homepage', { /* data */ });
+});
+
 // Inform Express.js regarding which template engine to use -- handlebars.js
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');

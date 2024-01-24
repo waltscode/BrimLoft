@@ -62,14 +62,14 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     Product.findByPk(req.params.id, {
         include: [
-        {
-            model: Category,
-            attributes: ['category_name']
-        },
-        {
-            model: Product,
-            attributes: ['name']
-        },
+        // {
+        //     model: Category,
+        //     attributes: ['category_name']
+        // },
+        // {
+        //     model: Product,
+        //     attributes: ['name']
+        // },
         {
             model: Review,
             include: [
@@ -81,14 +81,15 @@ router.get('/:id', (req, res) => {
         }
       ]
     }).then(productData => {
-        res.json(productData);
+        // Render the 'products' template and pass the productData to it
+        res.render('products', { productData, body: 'products' });
+        console.log(productData.name);
+       
     }).catch(err => {
         console.log(err);
         res.status(500).json(err);
-    }
-    );
-    }
-);
+    });
+});
 
 // create new product
 

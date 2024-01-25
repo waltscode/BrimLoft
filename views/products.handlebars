@@ -1,53 +1,123 @@
-{{!-- List of Products
-<h1>Our Products</h1>
-
-<section class="product-list">
-  {{#each products}}
-    <article class="product-item">
-      <img src="{{this.image_url}}" alt="{{this.name}}" class="product-image">
-      <h2 class="product-name"><a href="/product/{{this.id}}">{{this.name}}</a></h2>
-      <p class="product-description">{{this.description}}</p>
-      <p class="product-price">$ {{this.price}}</p>
-      {{#if this.Tags}}
-        <ul class="product-tags">
-          {{#each this.Tags}}
-            <li>{{this.name}}</li>
-          {{/each}}
-        </ul>
-      {{/if}}
-      <a href="/product/{{this.id}}" class="product-detail-link">View Details</a>
-    </article>
-  {{else}}
-    <p>No products found.</p>
-  {{/each}}
-</section> --}}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ productData.name }}</title>
     <!-- Add any additional styles or meta tags as needed -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        .product-page {
+            max-width: 80vw;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            text-align: center;
+            color: #1a73e8;
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .product-details {
+            text-align: center;
+        }
+
+        .product-image {
+            max-width: 30vw;
+            height: auto;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .description-box {
+            margin-top: 20px;
+            background-color: #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .price, .num-of-reviews, .num-in-stock, .rating {
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        .rating {
+            color: #f39c12;
+        }
+
+        .rating i {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+
+        .aside {
+            margin-right: 20px;
+            padding: 10px;
+            clear: both;
+            float: right;
+            width: 30%;
+            height: auto;
+            background-color: #e0e0e0;
+        }
+
+        .add-to-cart {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>{{ productData.name }}</h1>
+    <div class="product-page">
 
-    <div>
-      
-        <p>Product Name: {{ productData.dataValues.name }}</p>
-        <p>Description: {{ productData.dataValues.description }}</p>
-        <img src="{{ productData.dataValues.image1_url }}" alt="{{ productData.dataValues.name }}">
-        <p>Price: ${{ productData.dataValues.price }}</p>
-        <p>Rating: {{ productData.dataValues.rating }} / 5</p>
-        <p>Number of Reviews: {{ productData.dataValues.num_of_reviews }}</p>
-        <p>Number in Stock: {{ productData.dataValues.num_in_stock }}</p>
+        <div class="product-details">
+            <h3 class="detail"><strong>{{ productData.dataValues.name }}</strong></h3>
+            <img src="{{ productData.dataValues.image1_url }}" alt="{{ productData.dataValues.name }}" class="product-image">
+            <container class="aside">
+                <div class="price"><strong>Price:</strong> ${{ productData.dataValues.price }}</div>
+                <div class="num-of-reviews"><strong>Number of Reviews:</strong> {{ productData.dataValues.num_of_reviews }}</div>
+                <div class="num-in-stock"><strong>Number in Stock:</strong> {{ productData.dataValues.num_in_stock }}</div>
+                <div class="rating"><strong>Rating:</strong> {{ productData.dataValues.rating }} / 5</div>
+                <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+            </container>
+            <div class="description-box">
+                <p class="detail"><strong>Description:</strong></p>
+                <p>{{ productData.dataValues.description }}</p>
+            </div>
+        </div>
+
+        <!-- Include any additional HTML elements or formatting as needed -->
+
+        <!-- Include any JavaScript files or scripts if needed -->
+        <script>
+            function addToCart() {
+                // Add your logic for adding to cart here
+                alert('Product added to cart!');
+            }
+        </script>
     </div>
-
-    <!-- Include any additional HTML elements or formatting as needed -->
-
-    {{!-- Include any JavaScript files or scripts if needed --}}
 </body>
-</html>
-</body>
+
 </html>

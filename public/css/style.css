@@ -71,7 +71,7 @@ ul {
 footer{
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   background-color: #4e4d4d;
   color: white;
 }

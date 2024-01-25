@@ -128,7 +128,8 @@ const userData = [
     default_address: "7482 Black Walnut Terrace\nMississauga, ON\nL5N 8B1",
     username: "TariqueM",
     password: "password1023",
-    email: "tmoatar114@gmail.com"
+    email: "tmoatar114@gmail.com",
+    role: "manager"
   },
   {
     first_name: "Camila",

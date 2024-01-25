@@ -36,15 +36,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     Product.findByPk(req.params.id, {
         include: [
-        {
-            model: Category,
-            attributes: ['category_name']
-        },
-        {
-          model: Tag,
-          through: ProductTag,
-        },
-        {
+
             model: Review,
             include: [
               {
@@ -55,14 +47,15 @@ router.get('/:id', (req, res) => {
         }
       ]
     }).then(productData => {
-        res.json(productData);
+        // Render the 'products' template and pass the productData to it
+        res.render('products', { productData, body: 'products' });
+        console.log(productData.name);
+       
     }).catch(err => {
         console.log(err);
         res.status(500).json(err);
-    }
-    );
-    }
-);
+    });
+});
 
 // Add a new product
 //POST http://localhost:3001/api/products req.body: {"name": "Ten Gallon Hat","quote": "The bigger the hat the smaller the property", "description": "Cowboy standard", "price": "19.99", "image1_url": "", "image2_url": "", "image3_url": "", "image4_url": "", "image5_url": "", "num_in_stock": "50", "rating": "4.86", "num_of_reviews": "7", "is_featured": true, "category_id": "2"}. Should consider making this a route restricted to managers

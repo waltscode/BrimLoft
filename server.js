@@ -18,7 +18,11 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Set up Handlebars.js engine with custom helpers
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({ helpers,
+  defaultLayout: 'main',
+  layoutsDir: path.join(__dirname, 'views/layouts'),
+  partialsDir: path.join(__dirname, 'views/partials')
+});
 
 const sess = {
   secret: process.env.SESSION_SECRET, // Reference to the SESSION_SECRET value is in the .env file
@@ -51,6 +55,6 @@ app.use(routes);
 // Syncs with the database using sequelize and starts the server. Setting force to false is best for production because it prevents accidental data loss when the server is terminated. 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
-    console.log(`Now listening on port ${PORT}!`);
+    console.log(`BRIMLOFT IS ONLINE! Now listening on port ${PORT}!`);
   });
 });

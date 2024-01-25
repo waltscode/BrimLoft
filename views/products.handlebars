@@ -1,4 +1,4 @@
-{{!-- List of Products --}}
+{{!-- List of Products
 <h1>Our Products</h1>
 
 <section class="product-list">
@@ -20,4 +20,34 @@
   {{else}}
     <p>No products found.</p>
   {{/each}}
-</section>
+</section> --}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ productData.name }}</title>
+    <!-- Add any additional styles or meta tags as needed -->
+</head>
+<body>
+    <h1>{{ productData.name }}</h1>
+
+    <div>
+      
+        <p>Product Name: {{ productData.dataValues.name }}</p>
+        <p>Description: {{ productData.dataValues.description }}</p>
+        <img src="{{ productData.dataValues.image_url }}" alt="{{ productData.dataValues.name }}">
+        <p>Price: ${{ productData.dataValues.price }}</p>
+        <p>Rating: {{ productData.dataValues.rating }} / 5</p>
+        <p>Number of Reviews: {{ productData.dataValues.num_of_reviews }}</p>
+        <p>Number in Stock: {{ productData.dataValues.num_in_stock }}</p>
+    </div>
+
+    <!-- Include any additional HTML elements or formatting as needed -->
+
+    {{!-- Include any JavaScript files or scripts if needed --}}
+</body>
+</html>
+</body>
+</html>

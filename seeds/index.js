@@ -18,6 +18,11 @@ const seedAll = async () => {
   console.log('\n------ USERS SEEDED _____\n');
   await seedCategories();
   console.log('\n----- CATEGORIES SEEDED -----\n');
+  await seedLeagues();
+  console.log('\n----- LEAGUES SEEDED -----\n');
+  await seedTeams();
+  console.log('\n----- TEAMS SEEDED -----\n');
+
   await seedProducts();
   console.log('\n----- PRODUCTS SEEDED -----\n');
   await seedTags();
@@ -30,11 +35,7 @@ const seedAll = async () => {
   console.log('\n------ORDERITEMS SEEDED ----\n');
   await seedReviews();
   console.log('\n------REVIEWS SEEDED -----\n');
-  await seedLeagues();
-  console.log('\n----- LEAGUES SEEDED -----\n');
-  await seedTeams();
-  console.log('\n----- TEAMS SEEDED -----\n');
-
+  
   process.exit(0);
 };
 

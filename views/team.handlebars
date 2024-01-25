@@ -1,14 +1,21 @@
 {{!-- Displays details for a specific team, including products associated with the team and league information --}}
-<h2>{{team.name}}</h2>
+<h2>{{team_name}}</h2>
 <div class="team-details">
-  <p>League: {{team.League.name}}</p>
+  <p>League: {{league.league_name}}</p>
   <div class="products-of-team">
     <h3>Products</h3>
-    {{#each team.Products}}
+  {{#if products.length}}
+    {{#each products}}
       <div class="product">
         <h4><a href="/product/{{this.id}}">{{this.name}}</a></h4>
         <!-- Add more product details like image, description, price -->
+        <p>{{this.price }}</p>
+        <p>{{this.description}}</p>
+        <img src="{{this.image1_url}}" alt="hat">
       </div>
     {{/each}}
+    {{else}}
+      <p>No products for this team yet.</p>
+    {{/if}}
   </div>
 </div>

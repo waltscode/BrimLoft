@@ -1,0 +1,76 @@
+/* Add the background styles to the body or a specific container */
+.bkgrnd-home {
+    /* Set the background properties */
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    background-size: cover;
+    min-height: 100vh; /* You can uncomment this line if needed for full-height background */
+
+    /* Center the content vertically and horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style the authentication form container */
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Style the header */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Style the form elements */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Style the registration and password reset links */
+p {
+    margin-top: 20px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

@@ -49,6 +49,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Define a route for "/authentication"
+app.get('/authentication', (req, res) => {
+  // Render the "authentication.handlebars" template
+  res.render('authentication');
+});
+
 //This crucial line leverages everything in the controllers folder which handles routing and makes the API functional to respond when endpoints are hit
 app.use(routes);
 

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Authentication</title>
+      <link rel="stylesheet" href="public/css/authentication.css">
+</head>
+
+<body>
+    <div id="authentication-page">
+        <div class="container">
+            <h1>User Authentication</h1>
+            <!-- Add your login or registration form here -->
+            <form action="/login" method="POST">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <br>
+                <button type="submit">Login</button>
+            </form>
+            <!-- Add links for registration or forgot password if needed -->
+            <p>Don't have an account? <a href="/register">Register</a></p>
+            <p>Forgot your password? <a href="/forgot-password">Reset Password</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

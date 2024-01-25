@@ -24,6 +24,8 @@ const hbs = exphbs.create({ helpers,
   partialsDir: path.join(__dirname, 'views/partials')
 });
 
+
+
 const sess = {
   secret: process.env.SESSION_SECRET, // Reference to the SESSION_SECRET value is in the .env file
   cookie: {

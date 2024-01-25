@@ -34,27 +34,35 @@ router.get('/', (req, res) => {
 // view a particular product by its `id`
 //GET http://localhost:3001/api/products/4 (tested by KW. Works.)
 router.get('/:id', (req, res) => {
-    Product.findByPk(req.params.id, {
-        include: [
-
-            model: Review,
-            include: [
-              {
-                model: User,
-                attributes: ['username'] 
-              }
-            ]
-        }
-      ]
-    }).then(productData => {
-        // Render the 'products' template and pass the productData to it
-        res.render('products', { productData, body: 'products' });
-        console.log(productData.name);
-       
-    }).catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+  Product.findByPk(req.params.id, {
+      include: [
+      // {
+      //     model: Category,
+      //     attributes: ['category_name']
+      // },
+      // {
+      //     model: Product,
+      //     attributes: ['name']
+      // },
+      {
+          model: Review,
+          include: [
+            {
+              model: User,
+              attributes: ['username'] 
+            }
+          ]
+      }
+    ]
+  }).then(productData => {
+      // Render the 'products' template and pass the productData to it
+      res.render('products', { productData, body: 'products' });
+      console.log(productData.name);
+     
+  }).catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+  });
 });
 
 // Add a new product

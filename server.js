@@ -29,7 +29,7 @@ const sess = {
   cookie: {
     maxAge: 300000,
     httpOnly: true,
-    secure: true, // This project will eventually be deployed to Heroku which provides an HTTPS URL, so I am setting this to true. It means that the cookie will only be sent over secure (HTTPS) connections
+    secure: false, // This project will eventually be deployed to Heroku which provides an HTTPS URL, I am setting to false during development but should be set to true before deployment. That will ensure that the cookie will only be sent over secure (HTTPS) connections
     sameSite: 'strict',
   },
   resave: false,

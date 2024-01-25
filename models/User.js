@@ -60,6 +60,14 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    role: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 'user', // Default role is 'user' for those who create an account in order to shop
+      validate: {
+        isIn: [['user', 'manager', 'admin']], // Manager and admin are roles that grant access to particular routes, fetching particular data, such as the full list of all users with email addresses and mailing address.
+      },
+    },
   },
   {
     hooks: {

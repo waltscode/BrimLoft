@@ -42,11 +42,11 @@ OrderItem.belongsTo(Order, { //This is a more traditional ecommerce approach whe
   onDelete: 'CASCADE', //This allows the item to be removed from the order if the order is deleted.
 });
 
-OrderItem.belongsTo(Product, {
+Product.hasMany(OrderItem, {
   foreignKey: 'product_id',
 });
 
-Product.hasMany(OrderItem, {
+OrderItem.belongsTo(Product, {
   foreignKey: 'product_id',
 });
 

@@ -2,75 +2,41 @@ const express = require('express');
 const router = express.Router();
 const { Product, User, Category, Tag, ProductTag, Review, Teams, League } = require('../../models');
 
-// The `/api/products` endpoint
-// find all products
-
-// router.get('/', async (req, res) => {
-//   // try {
-//   //   const productData = await Product.findAll({
-//   //     include: [
-//   //       {
-//   //         model: Category,
-//   //         attributes: ['category_name']
-//   //       },
-//   //       {
-//   //         model: Tag,
-//   //         through: ProductTag, 
-//   //         attributes: ['tag_name'] 
-//   //       },
-//   //       {
-//   //         model: Teams, 
-//   //         attributes: ['team_name'] 
-//   //       },
-//   //       {
-//   //         model: League, 
-//   //         attributes: ['league_name'] 
-//   //       }
-//   //     ]
-//   //   });
-
-
-
-//     res.json(productData);
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
-
-
+// View all products
+// GET http://localhost:3001/api/products  Tested by KW  Works.  
 router.get('/', (req, res) => {
   Product.findAll({
       include: [
-      {
+        {
+          model: Category,
+          attributes: ['category_name']
+        },
+        {
           model: Tag,
-      }
-  ]
-}).then(leagueData => {
-  res.json(leagueData);
-}
-).catch(err => {
-  console.log(err);
-  res.status(500).json(err);
-});
-}
+          through: ProductTag, 
+          attributes: ['tag_name'] 
+        },
+        {
+          model: Teams, 
+          attributes: ['team_name'] 
+        },
+      ]
+    }).then(productData => {
+      res.json(productData);
+    }
+    ).catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+  }
 );
 
-// find a single product by its `id`
-// be sure to include its associated Category and Tag data
-
+// view a particular product by its `id`
+//GET http://localhost:3001/api/products/4 (tested by KW. Works.)
 router.get('/:id', (req, res) => {
     Product.findByPk(req.params.id, {
         include: [
-        // {
-        //     model: Category,
-        //     attributes: ['category_name']
-        // },
-        // {
-        //     model: Product,
-        //     attributes: ['name']
-        // },
-        {
+
             model: Review,
             include: [
               {
@@ -91,8 +57,9 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// create new product
-
+// Add a new product
+//POST http://localhost:3001/api/products req.body: {"name": "Ten Gallon Hat","quote": "The bigger the hat the smaller the property", "description": "Cowboy standard", "price": "19.99", "image1_url": "", "image2_url": "", "image3_url": "", "image4_url": "", "image5_url": "", "num_in_stock": "50", "rating": "4.86", "num_of_reviews": "7", "is_featured": true, "category_id": "2"}. Should consider making this a route restricted to managers
+// Tested by KW. Works
 router.post('/', (req, res) => {
     Product.create(req.body).then(productData => {
         res.json(productData);
@@ -103,8 +70,9 @@ router.post('/', (req, res) => {
     }
 );
 
-// update product
-
+// Update a particular product
+// PUT http://localhost:3001/api/products/36. Submitted req.body {"price": "24.99"} to update price of Ten Gallon hat. Should consider making this route restricted to managers
+// Tested by KW. Works
 router.put('/:id', (req, res) => {
     Product.update(req.body, {
         where: {
@@ -120,8 +88,9 @@ router.put('/:id', (req, res) => {
     }
 );
 
-// delete one product by its `id` value
-
+// delete a particular product by its `id`
+// DELETE http://localhost: 3001/api/products/36 (deleted Ten Gallon Hat). Should consider making this route restricted to managers
+// Tested by KW, Works.
 router.delete('/:id', (req, res) => {
     Product.destroy({
         where: {

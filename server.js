@@ -41,6 +41,7 @@ const sess = {
   })
 };
 
+
 app.use(session(sess));
 
 // Inform Express.js regarding which template engine to use -- handlebars.js
@@ -50,6 +51,36 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Define a route for "/authentication"
+app.get('/authentication', (req, res) => {
+  // Render the "authentication.handlebars" template
+  res.render('authentication');
+});
+
+app.get('/profile', async (req, res) => {
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
+
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      // Include any additional data you want to retrieve (e.g., orders, preferences)
+    });
+
+    if (!userData) {
+      res.status(404).send('User not found');
+      return;
+    }
+
+    const user = userData.get({ plain: true });
+    res.render('profile', { user });
+  } catch (err) {
+    console.error('Error fetching user data:', err);
+    res.status(500).send('Internal server error');
+  }
+});
 
 //This crucial line leverages everything in the controllers folder which handles routing and makes the API functional to respond when endpoints are hit
 app.use(routes);

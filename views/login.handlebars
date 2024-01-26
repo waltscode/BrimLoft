@@ -2,14 +2,20 @@
   <div class="col-md-6">
     <h2>Login</h2>
 
-    <form class="form login-form">
+    <form class="form login-form" action="/login" method="POST">
       <div class="form-group">
         <label for="email-login">email:</label>
-        <input class="form-input" type="text" id="email-login" />
+        <input class="form-input" type="text" id="email-login" name="email" value="{{loginEmail}}" />
+        {{#if loginErrors.email}}
+          <p class="error">{{loginErrors.email}}</p>
+        {{/if}}
       </div>
       <div class="form-group">
         <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" />
+        <input class="form-input" type="password" id="password-login" name="password" />
+        {{#if loginErrors.password}}
+          <p class="error">{{loginErrors.password}}</p>
+        {{/if}}
       </div>
       <div class="form-group">
         <button class="btn btn-primary" type="submit">login</button>
@@ -19,18 +25,27 @@
   <div class="col-md-6">
     <h2>Signup</h2>
 
-    <form class="form signup-form">
+    <form class="form signup-form" action="/signup" method="POST">
       <div class="form-group">
         <label for="name-signup">name:</label>
-        <input class="form-input" type="text" id="name-signup" />
+        <input class="form-input" type="text" id="name-signup" name="name" value="{{signupName}}" />
+        {{#if signupErrors.name}}
+          <p class="error">{{signupErrors.name}}</p>
+        {{/if}}
       </div>
       <div class="form-group">
         <label for="email-signup">email:</label>
-        <input class="form-input" type="text" id="email-signup" />
+        <input class="form-input" type="text" id="email-signup" name="email" value="{{signupEmail}}" />
+        {{#if signupErrors.email}}
+          <p class="error">{{signupErrors.email}}</p>
+        {{/if}}
       </div>
       <div class="form-group">
         <label for="password-signup">password:</label>
-        <input class="form-input" type="password" id="password-signup" />
+        <input class="form-input" type="password" id="password-signup" name="password" />
+        {{#if signupErrors.password}}
+          <p class="error">{{signupErrors.password}}</p>
+        {{/if}}
       </div>
       <div class="form-group">
         <button class="btn btn-primary" type="submit">signup</button>
@@ -38,5 +53,3 @@
     </form>
   </div>
 </div>
-
-<script src="./js/login.js"></script>

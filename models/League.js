@@ -15,6 +15,10 @@ League.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    league_logo_url: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     sequelize, // Include the sequelize connection

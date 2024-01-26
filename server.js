@@ -24,12 +24,14 @@ const hbs = exphbs.create({ helpers,
   partialsDir: path.join(__dirname, 'views/partials')
 });
 
+
+
 const sess = {
   secret: process.env.SESSION_SECRET, // Reference to the SESSION_SECRET value is in the .env file
   cookie: {
     maxAge: 300000,
     httpOnly: true,
-    secure: true, // This project will eventually be deployed to Heroku which provides an HTTPS URL, so I am setting this to true. It means that the cookie will only be sent over secure (HTTPS) connections
+    secure: false, // This project will eventually be deployed to Heroku which provides an HTTPS URL, I am setting to false during development but should be set to true before deployment. That will ensure that the cookie will only be sent over secure (HTTPS) connections
     sameSite: 'strict',
   },
   resave: false,

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ productData.name }}</title>
+    <title>{{ team_name }}</title>
     <!-- Add any additional styles or meta tags as needed -->
     <style>
         body {
@@ -93,20 +93,34 @@
     <div class="product-page">
 
         <div class="product-details">
-            <h3 class="detail"><strong>{{ productData.dataValues.name }}</strong></h3>
-            <img src="{{ productData.dataValues.image1_url }}" alt="{{ productData.dataValues.name }}" class="product-image">
-            <container class="aside">
-                <div class="price"><strong>Price:</strong> ${{ productData.dataValues.price }}</div>
-                <div class="num-of-reviews"><strong>Number of Reviews:</strong> {{ productData.dataValues.num_of_reviews }}</div>
-                <div class="num-in-stock"><strong>Number in Stock:</strong> {{ productData.dataValues.num_in_stock }}</div>
-                <div class="rating"><strong>Rating:</strong> {{ productData.dataValues.rating }} / 5</div>
-                <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
-            </container>
-            <div class="description-box">
-                <p class="detail"><strong>Description:</strong></p>
-                <p>{{ productData.dataValues.description }}</p>
+            <h3 class="detail"><strong>{{ team_name }}</strong></h3>
+            <div class="products-of-team">
+                {{#if products.length}}
+                    {{#each products}}
+                        <div class="product">
+                            <h4><a href="/product/{{this.id}}">{{this.name}}</a></h4>
+                            <img src="{{this.image1_url}}" alt="{{this.name}}" class="product-image">
+                            <container class="aside">
+                                <div class="price"><strong>Price:</strong> ${{this.price}}</div>
+                                <div class="num-of-reviews"><strong>Number of Reviews:</strong> {{this.num_of_reviews}}</div>
+                                <div class="num-in-stock"><strong>Number in Stock:</strong> {{this.num_in_stock}}</div>
+                                <div class="rating"><strong>Rating:</strong> {{ this.rating }} / 5</div>
+                                <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+                            </container>
+                            <div class="description-box">
+                                <p class="detail"><strong>Description:</strong></p>
+                                <p>{{this.name}} {{this.description}}</p>
+                            </div>
+                        </div>
+                    {{/each}}
+                {{else}}
+                    <p>No products for this team yet.</p>
+                {{/if}}
             </div>
         </div>
+
+        <!-- Include Font Awesome for stars -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <!-- Include any additional HTML elements or formatting as needed -->
 

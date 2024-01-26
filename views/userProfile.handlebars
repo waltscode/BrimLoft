@@ -1,11 +1,16 @@
-{{!-- User Profile --}}
 <h2>User Profile: {{user.username}}</h2>
 <div class="user-details">
+  <p>Full Name: {{user.firstName}} {{user.lastName}}</p>
   <p>Email: {{user.email}}</p>
   <p>Address: {{user.address}}</p>
   <!-- Add more user details here -->
+  <!-- Profile Picture -->
+  {{#if user.profilePicture}}
+    <img src="{{user.profilePicture}}" alt="Profile Picture">
+  {{/if}}
 </div>
 
+<!-- Orders Section -->
 <h3>Your Orders:</h3>
 {{#if user.orders}}
   <ul class="orders-list">
@@ -19,6 +24,7 @@
   <p>You have no orders.</p>
 {{/if}}
 
+<!-- Reviews Section -->
 <h3>Your Reviews:</h3>
 {{#if user.reviews}}
   <ul class="reviews-list">
@@ -33,4 +39,8 @@
   <p>You have not written any reviews.</p>
 {{/if}}
 
-{{!-- Add any additional user-related features here --}}
+<!-- Navigation Links -->
+<div class="profile-navigation">
+  <a href="/edit-profile">Edit Profile</a>
+  <a href="/logout" class="logout-button">Logout</a>
+</div>

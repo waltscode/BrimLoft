@@ -84,6 +84,7 @@
 
 // module.exports = router;
 const router = require('express').Router();
+const { League, Teams, Category, Product, Tag, Order, OrderItem, Review, User, ProductTag } = require('../models');
 
 router.get('/', async (req, res) => {
   try {
@@ -99,4 +100,63 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/leagues/:id', async (req, res) => {
+  try {
+    const leagueData = await League.findByPk(req.params.id, {
+      include: [
+        {
+          model: Teams,
+        },
+      ],
+    });
+    const league = leagueData.get({ plain: true });
+    console.log(league);
+    res.render('league', {
+      // spread operator to pass all properties of leagueData to the template
+      ...league,
+      // logged_in: req.session.logged_in,
+    });
+  }
+  catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+);
+
+router.get('/teams/:id', async (req, res) => {
+  try {
+    const teamData = await Teams.findByPk(req.params.id, {
+      include: [
+        {
+          model: League,
+        },
+        {
+          model: Product,
+          include: [
+            {
+              model: Category,
+            },
+            {
+              model: Tag,
+              through: ProductTag,
+            },
+          ],
+        },
+      ],
+    });
+    const team = teamData.get({ plain: true });
+    console.log(team);
+    res.render('team', {
+      // spread operator to pass all properties of teamData to the template
+      ...team,
+      // logged_in: req.session.logged_in,
+    });
+  }
+  catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+);
 module.exports = router;

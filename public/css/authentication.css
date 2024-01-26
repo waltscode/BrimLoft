@@ -37,7 +37,7 @@ body {
   }
   .form-v9-content .form-detail h2::after {
 	background: #9e5df2;
-	width: 200px;
+	width: 500px;
 	height: 3px;
 	content: "";
 	position: absolute;
@@ -59,7 +59,7 @@ body {
 	text-align: center;
   }
   .form-v9-content .form-detail .input-text {
-	margin-bottom: 45px;
+	margin-bottom: 25px;
   }
   .form-v9-content .form-detail input {
 	width: 100%;

@@ -74,16 +74,19 @@ app.get('/profile', async (req, res) => {
       return;
     }
 
-    const user = userData.get({ plain: true });
+  const user = userData.get({ plain: true });
     res.render('profile', { user });
   } catch (err) {
     console.error('Error fetching user data:', err);
     res.status(500).send('Internal server error');
   }
 });
-
 //This crucial line leverages everything in the controllers folder which handles routing and makes the API functional to respond when endpoints are hit
 app.use(routes);
+
+
+const userRoutes = require('./controllers/api/userRoutes');
+app.use('/api/users', userRoutes);
 
 // Syncs with the database using sequelize and starts the server. Setting force to false is best for production because it prevents accidental data loss when the server is terminated. 
 sequelize.sync({ force: false }).then(() => {
@@ -91,3 +94,4 @@ sequelize.sync({ force: false }).then(() => {
     console.log(`BRIMLOFT IS ONLINE! Now listening on port ${PORT}!`);
   });
 });
+

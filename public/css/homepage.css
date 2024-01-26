@@ -1,3 +1,10 @@
+:root {
+    --peach: #ffd1b3;
+    --mint-white: #f5fffa;
+    --dark-grey: darkslategray;
+}
+
+
 .bkgrnd-home {
     /* min-height: 100vh; */
     background-color: #8EC5FC;
@@ -7,3 +14,43 @@ background-size: cover;
 
 }
 
+.accordion {
+    display: none;
+    padding-left: 20px;
+  }
+  
+  .accordion a {
+    
+    font-weight: normal;
+    display: inline-block;
+    margin-right: 10px; 
+  }
+
+  .accordion li {
+   display: inline-block;
+  }
+
+.hero-title {
+    font-size: 85px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: bold;
+    color: var(--dark-grey);
+}
+
+.hero-descrip {
+    margin-top: 35px;
+    margin-bottom: 35px;
+    font-size: 35px;
+    font-family: 'Outfit', sans-serif;
+    font-style: italic;
+    color: var(--peach);
+}
+
+.hero-descrip2 {
+    margin-top: 35px;
+    margin-bottom: 35px;
+    font-size: 35px;
+    font-family: 'Outfit', sans-serif;
+    font-style: italic;
+    color: var(--dark-grey);
+}

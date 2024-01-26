@@ -55,7 +55,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
  
   {{!-- <link rel="stylesheet" href="/css/jass.css"> --}}
-  
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/homepage.css">
   
@@ -68,33 +68,18 @@
   </h1>
 </header>
 
-<<<<<<< HEAD
-<nav>
-<ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Men's</a></li>
-    <li><a href="#">Women's</a></li>
-    <li><a href="#">League</a></li>
-</ul>
-<div class="right-buttons">
-    <button class="cart-button">Cart</button>
-    <a href="/authentication" class="button-large">SignIn</a>
-    <button class="profile-button">Profile</button>
-</div>
-</nav>
 
-=======
     <nav>
     <ul>
-      <li><a href="#">Home</a></li>
+      <li><a href="/">Home</a></li>
       <li class="sports">
         <a href="#">Sports</a>
         <!-- Accordion content -->
         <ul class="accordion">
-            <li><a href="/leagues/1" data-league="1">NHL</a></li>
-                <li><a href="/leagues/2" data-league="2">NFL</a></li>
-                <li><a href="/leagues/3" data-league="3">MLB</a></li>
-                <li><a href="/leagues/4" data-league="4">NBA</a></li>
+            <li><a href="/leagues/1" data-league="1" style="color: var(--mint-white);">NHL</a></li>
+                <li><a href="/leagues/2" data-league="2" style="color: var(--mint-white);">NFL</a></li>
+                <li><a href="/leagues/3" data-league="3" style="color: var(--mint-white);">MLB</a></li>
+                <li><a href="/leagues/4" data-league="4" style="color: var(--mint-white);">NBA</a></li>
         </ul>
       </li>
       <li><a href="#">Basics</a></li>
@@ -102,11 +87,11 @@
     </ul>
     <div class="right-buttons">
       <button class="cart-button">Cart</button>
-      <button class="profile-button">Profile</button>
+<a href="/authentication" class="button-large cart-button">SignIn</a>
+<button class="profile-button">Profile</button>
     </div>
   </nav>
-  <div id="teamsContainer"></div>
->>>>>>> 03da65273ee17f910cfeacb04fb9278f14933bdc
+
 
 <body class="bkgrnd-home container">
 {{{ body }}}

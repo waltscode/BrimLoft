@@ -85,12 +85,4 @@ header {
 
 /* accordion stylings */
 
-.accordion {
-  display: none;
-  padding-left: 20px;
-}
 
-.accordion a {
-  color: #666;
-  font-weight: normal;
-}

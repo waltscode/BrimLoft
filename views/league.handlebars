@@ -1,10 +1,96 @@
-{{!-- Provides details about a specific league and its teams --}}
-<h2>{{league_name}} League</h2>
-<div class="teams-in-league">
-  <h3>Teams</h3>
-  {{#each teams}}
-    <div class="team">
-      <h4><a href="/teams/{{this.id}}">{{this.team_name}}</a></h4>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ league_name }} League</title>
+    <!-- Add any additional styles or meta tags as needed -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        .league-page {
+            max-width: 80vw;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center the content */
+        }
+
+        h2, h3 {
+            text-align: center;
+            color: #1a73e8;
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .league-logo {
+            max-width: auto;
+            height: 40vh;
+            display: block; 
+            margin: 0 auto; 
+            margin-bottom: 10px; 
+        }
+
+        .teams-in-league {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .team {
+            width: 200px; /* Set a fixed width for uniform size */
+            margin: 10px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .team-logo {
+            max-width: 100%;
+            max-height: 100px; /* Set a max height as needed */
+            margin-bottom: 10px;
+        }
+
+        .team h4 {
+            margin: 0;
+            color: #1a73e8;
+        }
+
+        .team a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="league-page">
+
+        <img class="league-logo" src="{{ league_logo_url }}" alt="{{ league_name }}">
+
+        <div class="teams-in-league">
+            {{#each teams}}
+                <div class="team">
+                   <img src="{{this.team_logo_url}}" class="team-logo" alt="{{ this.team_name }} Logo">
+                    <h4><a href="/teams/{{this.id}}">{{ this.team_name }}</a></h4>
+                </div>
+            {{/each}}
+        </div>
+
     </div>
-  {{/each}}
-</div>
+</body>
+
+</html>

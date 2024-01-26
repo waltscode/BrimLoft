@@ -15,6 +15,10 @@ Teams.init(
         type: DataTypes.STRING,
         allowNull: false,
         },
+        team_logo_url: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        },
 
         league_id: {
             type: DataTypes.INTEGER,

@@ -2,10 +2,6 @@ const router = require('express').Router();
 const { User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-<<<<<<< HEAD
-// Route for creating a new user (Registration)
-router.post('/', async (req, res) => {
-=======
 // Route to get all users
 // GET http://localhost:3001/api/users
 // Tested by KW. Works.
@@ -55,7 +51,6 @@ router.get('/:id', async (req, res) => {
 // POST http://localhost:3001/api/users/signup  Sample req.body: {"first_name": "Celia", "last_name": "Ramsay", "default_address": "303-77 Spruce Place SW, Calgary AB, T3C3X6", "username": "CeliaR", "password": "password1038","email": "cramsay129@gmail.com"}. 
 // Tested in Insomnia by KW. Was able to add Celia. Works.
 router.post('/signup', async (req, res) => {
->>>>>>> 03da65273ee17f910cfeacb04fb9278f14933bdc
   try {
     const userData = await User.create(req.body);
 
@@ -72,9 +67,6 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-// Route for User Login
-=======
 // Route for User Login. Tested in Insomnia by KW. I had to create code in user-seeds.js to hash the passwords seeded in the database.  Only then does the password entered with the req.body match that which is stored in the database. This also verifies that our bcrypting code for user login is working in homeRoutes.js.  
 // POST http://localhost:3001/api/users/login sample req.body {"email": "kwubbenhorst@gmail.com", "password": "password789"}
 // Tested by KW. Works.
@@ -110,35 +102,17 @@ router.post('/signup', async (req, res) => {
 //   }
 // });
 
->>>>>>> 03da65273ee17f910cfeacb04fb9278f14933bdc
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
-<<<<<<< HEAD
-      res.status(400).json({ message: 'Incorrect email or password, please try again' });
-      return;
-=======
       return res.status(400).json({ message: 'Incorrect email or password, please try again' });
->>>>>>> 03da65273ee17f910cfeacb04fb9278f14933bdc
     }
 
     const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
-<<<<<<< HEAD
-      res.status(400).json({ message: 'Incorrect email or password, please try again' });
-      return;
-    }
-
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-
-      // Redirect to the profile page after successful login
-      res.redirect('/profile');
-=======
       return res.status(400).json({ message: 'Incorrect email or password, please try again' });
     }
 
@@ -152,7 +126,6 @@ router.post('/login', async (req, res) => {
       }
 
       return res.json({ user: userData, message: 'You are now logged in!' });
->>>>>>> 03da65273ee17f910cfeacb04fb9278f14933bdc
     });
 
   } catch (err) {
@@ -161,14 +134,10 @@ router.post('/login', async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-// User logout route
-=======
 
 // User logout route.  http://localhost:3001/api/users/logout . No req.body required.
 // Tested by KW.  At first it didn't work. Works now. Issue was because the cookie was not being passed. I had set the cookie secure setting to true in server.js, and it should be changed back to true before deployment, but for testing with Insomnia, which uses http, not https, this is what prevented the cookie being established and remembered. Works fine now with change in server.js to secure: false.
 
->>>>>>> 03da65273ee17f910cfeacb04fb9278f14933bdc
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {

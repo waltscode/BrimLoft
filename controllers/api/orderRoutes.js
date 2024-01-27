@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router();
+const router = express.Router(); 
 const withAuth = require('../../utils/auth.js');
 const { Order, OrderItem, Product, User, Tag } = require('../../models');
 
@@ -77,63 +77,23 @@ router.get('/:id', async (req, res) => {
 });
 
 
-//Route to create a new order
-//POST http://localhost:3001/api/orders.  I logged in as KarlaW before starting this test, otherwise the cookie won't be passed and the test will fail. Then I passed in the following req.body: {"user_id": 5, "total_amount": 27.99}.  KarlaW has successfully placed an order for one outback hat
-//Tested by KW. Works.  Note: MUST LOG IN FIRST. Note2: data response object includes the timestamp which is generated according to dateNOW (the default) which is good. 
-//Through the Sequelize associations this route will also update the OrderItems table to reflect all the new items in the newly created order.
-//Note the price is not adjusted at the back end for any customizations, so total_amount needs to be passed in from the front and should reflect price_adjustment due to tags from FE logic.
-// router.post('/create-new-order-at-checkout', async (req, res) => {
-//     try {
-//       // Log the user_id from the session to check its value
-//       console.log("User ID from session:", req.session.user_id);
-  
-//       // Check if req.session.user_id is present before creating the order
-//       if (!req.session.user_id) {
-//         return res.status(401).json({ message: "User not authenticated" });
-//       }
-  
-//       // Create the order
-//       const order = await Order.create({ ...req.body, user_id: req.session.user_id });
-  
-//       // Create associated order items
-//       const { product_id, quantity } = req.body;
-  
-//       // Retrieve the product's price based on the product_id
-//       const product = await Product.findByPk(product_id);
-//       if (!product) {
-//         return res.status(404).json({ message: "Product not found" });
-//       }
-  
-//       // Calculate the price_at_purchase dynamically
-//       const price_at_purchase = product.price * quantity;
-  
-//       await OrderItem.create({
-//         order_id: order.id,
-//         product_id,
-//         quantity,
-//         price_at_purchase,
-//       });
-  
-//       res.json(order);
-//     } catch (err) {
-//       console.error(err);
-//       res.status(500).json(err);
-//     }
-//   });
-
-
-
+//Route to create a new order at checkout
+//POST http://localhost:3001/api/orders/create-new-order-at-checkout.  
+//Use case is when a logged in user has placed products in cart and is ready to go to checkout.
+//At checkout an order_id is assigned and order-items are seeded to the orderItems Table, carrying the order_id of the order to which they belong. 
+//Order Table will reflect summed total of price_at_purchase for all the individual order-items and this will be the total_amount value in the OrderTable
+//IMPORTANT: User must be logged in to create an order, so in testing the users/login route was run first before this route was tested.
+//Tested by KW. Works.  
+//Tried to add in logic to account for price_adjustment associated with certain tags. Not sure if that bit works, but we may not be using customizations for our MVP
 
 // POST /orders/create-new-order-at-checkout
 router.post('/create-new-order-at-checkout', withAuth, async (req, res) => {
   try {
-    console.log('Request Body:', req.body);
     // Assuming req.body.cart contains an array of product_ids and quantities
     const { cart } = req.body;
-    console.log('Cart:', cart);
 
     // Fetch user_id from the session
-    const { user_id } = req.session.user;
+    const user_id = req.session.user_id;
 
     // Create a new order
     const order = await Order.create({
@@ -164,7 +124,15 @@ router.post('/create-new-order-at-checkout', withAuth, async (req, res) => {
 
     // Update total_amount in the order
     const total_amount = orderItems.reduce((total, item) => total + item.orderItem.price_at_purchase, 0);
-    await Order.update({ total_amount }, { where: { id: order.id } });
+    
+    // Log the values for debugging
+    console.log('Total Amount:', total_amount);
+    console.log('Order Items:', orderItems);
+
+    // Update total_amount in the order using Promise.all
+    await Promise.all([
+      Order.update({ total_amount }, { where: { id: order.id } }),
+    ]);
 
     // Response with the order data including order-items
     res.status(201).json({ order, orderItems });
@@ -174,10 +142,10 @@ router.post('/create-new-order-at-checkout', withAuth, async (req, res) => {
   }
 });
 
-module.exports = router;
 
 
 // To have the complete set of CRUD operations for each model endpoint there would be a PUT one here to update Order.  However, practical use case would have the user updating their cart by updating individual items in the cart. So there is a PUT route included for orderItemRoutes but not here for orderRoutes.
+
 // Delete an order by its `id` value.
 // DELETE http://localhost:3001/api/orders/19 (end number is an order id and can change)
 // Tested by KW. Works.
@@ -202,6 +170,10 @@ router.delete('/:id', (req, res) => {
 );
 
 module.exports = router;
+
+
+
+
 
 
 

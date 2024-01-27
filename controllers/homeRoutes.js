@@ -159,4 +159,38 @@ router.get('/teams/:id', async (req, res) => {
   }
 }
 );
+
+router.get('/categories/:id', async (req, res) => {
+  try {
+    const categoryData = await Category.findByPk(req.params.id, {
+      include: [
+        {
+          model: Product,
+          include: [
+            {
+              model: Teams,
+            },
+            {
+              model: Tag,
+              through: ProductTag,
+            },
+          ],
+        },
+      ],
+    });
+    const category = categoryData.get({ plain: true });
+    console.log(category);
+    res.render('category', {
+      // spread operator to pass all properties of categoryData to the template
+      ...category,
+      // logged_in: req.session.logged_in,
+    });
+  }
+  catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+);
+
 module.exports = router;

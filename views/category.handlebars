@@ -1,0 +1,51 @@
+{{!-- Show all products within a given category --}}
+{{!-- <h2>{{this.id}}</h2>
+<div class="products-in-category">
+  {{#each products}}
+    <div class="product">
+      <img src="{{this.image1_url}}" alt="{{this.name}}">
+      <h3><a href="/product/{{this.id}}">{{this.name}}</a></h3>
+      <p>{{this.description}}</p>
+      <p>Price: {{this.price}}</p>
+    </div>
+  {{/each}}
+</div> --}}
+
+{{!-- <h2>{{this.id}}</h2>
+<div class="products-container" style="display: flex; flex-wrap: wrap; height: 500px; max-width: 100%; overflow-x: auto;">
+  {{#each products}}
+    <div class="card mb-3" style="flex: 0 0 600px; height: 500px; margin-right: 10px;">
+      <img src="{{this.image1_url}}" class="card-img-top" alt="{{this.name}}" style="object-fit: cover; width: 100%; height: 300px;">
+      <div class="card-body">
+        <h3 class="card-title"><a href="/product/{{this.id}}">{{this.name}}</a></h3>
+        <p class="card-text">Price: {{this.price}}</p>
+      </div>
+    </div>
+  {{/each}}
+</div> --}}
+
+<h2>{{this.id}}</h2>
+<div class="products-container" style="display: flex; flex-wrap: wrap; max-width: 100%; overflow-x: auto;">
+  {{#each products}}
+    <div class="card mb-3" style="flex: 0 0 600px; margin: 20px;">
+      <img src="{{this.image1_url}}" class="card-img-top" alt="{{this.name}}" style="object-fit: cover; width: 100%; height: 300px;">
+      <div class="card-body">
+         <h3 class="card-title"><a href="/api/products/{{this.id}}">{{this.name}}</a></h3>
+       
+        <p class="card-text">Price: {{this.price}}</p>
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var currentEndpoint = window.location.pathname;
+    
+    if (currentEndpoint === '/categories/2') {
+      document.querySelector('h2').innerText = 'Basics';
+    } else if (currentEndpoint === '/categories/5') {
+      document.querySelector('h2').innerText = 'Specialty';
+    }
+  });
+</script>

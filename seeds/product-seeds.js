@@ -578,7 +578,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 1
   },
   {
@@ -595,7 +595,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 2
   },
   {
@@ -612,7 +612,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 3
   },
   {
@@ -629,7 +629,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 4
   },
   {
@@ -646,7 +646,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 5
   },
   {
@@ -663,7 +663,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 6
   },
   {
@@ -680,7 +680,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 7
   },
   {
@@ -697,7 +697,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 8
   },
   {
@@ -714,7 +714,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 9
   },
   {
@@ -731,7 +731,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 10
   },
   {
@@ -748,7 +748,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 11
   },
   {
@@ -765,7 +765,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 12
   },
   {
@@ -782,7 +782,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 13
   },
   {
@@ -799,7 +799,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 14
   },
   {
@@ -816,7 +816,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 15
   },
   {
@@ -833,7 +833,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 16
   },
   {
@@ -850,7 +850,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 17
   },
   {
@@ -867,7 +867,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 18
   },
   {
@@ -884,7 +884,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 19
   },
   {
@@ -901,7 +901,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 20
   },
   {
@@ -918,7 +918,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 21
   },
   {
@@ -935,7 +935,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 22
   },
   {
@@ -952,7 +952,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 23
   },
   {
@@ -969,7 +969,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 24
   },
   {
@@ -986,7 +986,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 25
   },
   {
@@ -1003,7 +1003,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 26
   },
   {
@@ -1020,7 +1020,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 27
   },
   {
@@ -1037,7 +1037,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 28
   },
   {
@@ -1054,7 +1054,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 29
   },
   {
@@ -1071,7 +1071,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 30
   },
   {
@@ -1088,7 +1088,7 @@ const productData = [
     "rating": 4.6,
     "num_of_reviews": 17,
     "is_featured": false,
-    "category_id": 5,
+    "category_id": 1,
     "team_id": 31
   },
     {

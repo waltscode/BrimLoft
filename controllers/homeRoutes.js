@@ -84,6 +84,7 @@
 
 // module.exports = router;
 const router = require('express').Router();
+const withAuth = require('../utils/auth');
 const { League, Teams, Category, Product, Tag, Order, OrderItem, Review, User, ProductTag } = require('../models');
 
 router.get('/', async (req, res) => {
@@ -159,4 +160,47 @@ router.get('/teams/:id', async (req, res) => {
   }
 }
 );
+
+// Add this new route for the user profile
+router.get('/profile', withAuth, async (req, res) => {
+  try {
+    // Check if the user is logged in
+    if (!req.session.logged_in) {
+      // Redirect to the login page if not logged in
+      res.redirect('/login');
+      return;
+    }
+
+    // Find the user by the session user ID, include Orders and Reviews
+    const userData = await User.findByPk(req.session.user_id, {
+      include: [
+        {
+          model: Order,
+          include: [OrderItem], // Assuming Order has OrderItems
+        },
+        {
+          model: Review,
+        },
+      ],
+    });
+
+    if (!userData) {
+      res.status(404).json({ message: 'User not found' });
+      return;
+    }
+
+    // Serialize the data
+    const user = userData.get({ plain: true });
+
+    // Render the userProfile template with the user data
+    res.render('userProfile', {
+      user,
+      logged_in: true,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 module.exports = router;

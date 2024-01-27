@@ -63,8 +63,6 @@ BrimLoft is a dynamic web application designed for hat enthusiasts. It offers us
 - Explore different hat categories, add items to your cart, and proceed to checkout.
 - Utilize the user authentication feature to create a personal account, log in, and manage your orders and profile.
 
-
-
 ## Testing
 
 - Ensure all dependencies are installed by running npm install before conducting tests.
@@ -79,22 +77,24 @@ BrimLoft is a dynamic web application designed for hat enthusiasts. It offers us
 
 ## References
 
+- 
+-
+-
+-
+
 
 ## Contributing
 
 Please read [CONTRIBUTING.md](link to CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Versioning
-We use SemVer for versioning.
-
 ## Authors
 
 - Developed by a group of passionate developers committed to creating efficient and user-friendly software solutions.
-Walters John
-Lee Nicholas
-Morozan Stanislav
-Wubbenhorst Karla
-Singh Sanyam
+ Karla Wubbenhorst
+ John Walters
+ Nicholas Lee
+ Stanislav Morozan
+ Sanyam Singh 
 
 
 ## License

@@ -45,6 +45,11 @@ User.init(
         len: [8, 20],
       },
     },
+    default_address: {
+      type: DataTypes.STRING,
+      allowNull: true, // Set to true if the address can be optional
+      // If you want to enforce an address for every user, change this to `allowNull: false`
+    },
   },
   {
     hooks: {

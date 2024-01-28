@@ -1,13 +1,13 @@
 {{!-- Show details of a specific order, including the order items--}}
 <h2>Order #{{order.id}}</h2>
 <div class="order-details">
-  <p>Date: {{formatDate order.createdAt}}</p>
-  <p>Total: {{formatCurrency order.total}}</p>
+  <p>Date: {{ order.createdAt}}</p>
+  <p>Total: {{ order.total}}</p>
   {{#each order.items}}
     <div class="order-item">
       <h3>{{this.productName}}</h3>
       <p>Quantity: {{this.quantity}}</p>
-      <p>Price per item: {{formatCurrency this.price}}</p>
+      <p>Price per item: {{this.price}}</p>
     </div>
   {{/each}}
 </div>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Signup-Login Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/css/signup-login.css"/>
+</head>
+<body class="form-v9">
+    <div class="page-content">
+        <div class="form-v9-content" style="background-image: url('/images/bacground2.jpg')">
+            <!-- Signup Form -->
+            <form class="form-detail" id="signup-form" action="/api/users/signup" method="post">
+                <h2 id="form-title-su">Sign Up!</h2>
+                {{#if error_message}}
+                    <p class="error">{{error_message}}</p>
+                {{/if}}
+                <p id="wrong-place?-su">Already have an account? <a href="#" class="toggler-link" id="toggler-link-su">Login instead</a></p>
+                <div class="form-row-total">
+                    <!-- Full Name -->
+                    <div class="form-row">
+                        <input type="text" name="first_name" id="first-name-su" class="input-text" placeholder="First Name" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" name="last_name" id="last-name-su" class="input-text" placeholder="Last Name" required>
+                    </div>
+                    <!-- Username -->
+                    <div class="form-row">
+                        <input type="text" name="username" id="username-su" class="input-text" placeholder="Username" required>
+                    </div>
+                </div>
+                <!-- Email -->
+                <div class="form-row-total">
+                    <div class="form-row">
+                        <input type="email" name="email" id="email-su" class="input-text" placeholder="Email" required>
+                    </div>
+                    <!-- Password -->
+                    <div class="form-row">
+                        <input type="password" name="password" id="password-su" class="input-text" placeholder="Password" required>
+                    </div>
+                    <!-- Confirm Password -->
+                    <div class="form-row">
+                        <input type="password" name="confirm-password" id="confirm-password-su" class="input-text" placeholder="Confirm Password" required>
+                    </div>
+                    <!-- Submit Button -->
+                    <div class="form-row-last">
+                        <input type="submit" name="register" class="register" id="submit-button-su" value="Sign Up!">
+                    </div>
+                </div>
+            </form>
+            
+            <!-- Login Form (initially hidden) -->
+            <form class="form-detail" id="login-form" style="display: none;" action="/api/users/login" method="post">
+                <h2 id="form-title-li">Welcome Back!&nbsp;&nbsp;Please Login</h2>
+                {{#if error_message}}
+                    <p class="error">{{error_message}}</p>
+                {{/if}}
+                <p id="wrong-place?-li">Need an account? <a href="#" class="toggler-link" id="toggler-link-li">Signup instead</a></p>
+                <!-- Username -->
+                <div class="form-row">
+                    <input type="text" name="username" id="username-li" class="input-text" placeholder="Username" required>
+                </div>
+                <!-- Password -->
+                <div class="form-row">
+                    <input type="password" name="password" id="password-li" class="input-text" placeholder="Password" required>
+                </div>
+                <!-- Submit Button -->
+                <div class="form-row-last">
+                    <input type="submit" name="register" class="register" id="submit-button-li" value="Login">
+                </div>
+            </form>
+            <!-- End of Login Form -->
+        </div>
+    </div>
+    <script src="/js/signup-login.js"></script>
+</body>
+</html>

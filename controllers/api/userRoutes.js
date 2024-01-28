@@ -104,10 +104,10 @@ router.post('/signup', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
+    const userData = await User.findOne({ where: { username: req.body.username } });
 
     if (!userData) {
-      return res.status(400).json({ message: 'Incorrect email or password, please try again' });
+      return res.status(400).json({ message: 'Incorrect username or password, please try again' });
     }
 
     const validPassword = await userData.checkPassword(req.body.password);
@@ -145,6 +145,25 @@ router.post('/logout', (req, res) => {
     });
   } else {
     res.status(404).end();
+  }
+});
+
+// // A route that can be used to check the status of a user based on the presence of the session cookie from the client side.
+// router.get('/status', (req, res) => {
+//   console.log(req.session);
+//   const isAuthenticated = !!req.session.logged_in;
+//   res.json({ isAuthenticated });
+// });
+
+// Check if a user is logged in
+router.get('/check-login', (req, res) => {
+  // Check if the user information exists in the session
+  if (req.session.user) {
+    // User is logged in
+    res.json({ loggedIn: true, user: req.session.user_id });
+  } else {
+    // User is not logged in
+    res.json({ loggedIn: false });
   }
 });
 

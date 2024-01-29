@@ -134,16 +134,16 @@
 
 
       <!-- Right Column -->
-      <div class="col-md-5">
+     <div class="col-md-5">
         <h3>Order Summary</h3>
         <!-- List Group for Order Items -->
         <div class="list-group">
           {{#each orderItems}}
             <div class="list-group-item">
               <div class="d-flex w-100 justify-content-between">
-                <img src="{{ this.product.image1_url }}" alt="{{ this.product.name }}" class="order-item-image">
+            
                 <h5 class="mb-1">{{ this.product.name }}</h5>
-                <p class="mb-1">Price: ${{ this.price_at_purchase }}</p>
+                <p class="mb-1">Price: ${{ this.price_at_purchase}}</p>
                 <select class="custom-select quantity-dropdown">
                   {{#each options}}
                     <option value="{{ this }}" {{#ifCond ../quantity this}}selected{{/ifCond}}>{{ this }}</option>
@@ -156,26 +156,26 @@
           <div class="list-group-item">
             <div class="d-flex w-100 justify-content-between">
               <p class="mb-1">Subtotal:</p>
-              <span id="subtotal">${{ subtotal }}</span>
+              <span>${{ subtotal }}</span>
             </div>
           </div>
           <div class="list-group-item">
             <div class="d-flex w-100 justify-content-between">
               <p class="mb-1">Shipping:</p>
-              <span id="shippingCost">${{ shippingCost }}</span> 
+              <span>${{ shippingCost }}</span> 
             </div>
           </div>
           <div class="list-group-item">
             <div class="d-flex w-100 justify-content-between">
               <p class="mb-1">Taxes:</p>
-              <span id="orderItemTaxes">${{ orderItemsTaxes }}</span>
+              <span>${{ orderItemsTaxes }}</span>
             </div>
           </div>
           <!-- Total -->
           <div class="list-group-item">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">Total:</h5>
-              <span id="orderTotal">${{ orderTotal }}</span>
+              <span>${{ orderTotal }}</span>
             </div>
           </div>
           <!-- Confirm Order Button -->

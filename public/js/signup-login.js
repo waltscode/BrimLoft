@@ -99,9 +99,15 @@ const loginFormHandler = async (event) => {
         });
   
         if (response.ok) {
-            // In cart.js we set the last URL the user was visiting when they tried to add to cart and were told they needed to login or signup into local storage. Here we are retrieving it so we can take them back there (or alternatively to the home page)
-            const storedUrl = sessionStorage.getItem('redirectUrl') || '/';
-            window.location.href = storedUrl;
+            // Redirect to the homepage
+            window.location.href = '/';
+
+            // Dynamically update the signup-login button text with user's first name
+            const userResponse = await response.json();
+            const welcomeButton = document.getElementById('signup-login-btn');
+            if (welcomeButton) {
+                welcomeButton.textContent = `Welcome ${userResponse.user.first_name}`;
+            }
         } else {
             // Handle error response
             const data = await response.json();
@@ -118,8 +124,8 @@ const loginFormHandler = async (event) => {
 const signupFormHandler = async (event) => {
   event.preventDefault();
   
-  const firstName = document.querySelector('#first-name-su').value.trim();
-  const lastName = document.querySelector('#last-name-su').value.trim();
+  const first_name = document.querySelector('#first-name-su').value.trim();
+  const last_name = document.querySelector('#last-name-su').value.trim();
   const username = document.querySelector('#username-su').value.trim();
   const email = document.querySelector('#email-su').value.trim();
   const password = document.querySelector('#password-su').value.trim();
@@ -132,18 +138,24 @@ const signupFormHandler = async (event) => {
     return;
 }
   
-  if (firstName && lastName && username && email && password) {
+  if (first_name && last_name && username && email && password) {
     try {
         const response = await fetch('/api/users/signup', {
           method: 'POST',
-          body: JSON.stringify({ firstName, lastName, username, email, password }),
+          body: JSON.stringify({ first_name, last_name, username, email, password }),
           headers: { 'Content-Type': 'application/json' },
         });
   
         if (response.ok) {
-            // In cart.js we set the last URL the user was visiting when they tried to add to cart and were told they needed to login or signup into local storage. Here we are retrieving it so we can take them back there (or alternatively to the home page)
-            const storedUrl = sessionStorage.getItem('redirectUrl') || '/';
-            window.location.href = storedUrl;
+            // Redirect to the homepage
+            window.location.href = '/';
+
+            // Dynamically update the signup-login button text with user's first name
+            const userResponse = await response.json();
+            const welcomeButton = document.getElementById('signup-login-btn');
+            if (welcomeButton) {
+                welcomeButton.textContent = `Welcome ${userResponse.user.first_name}`;
+            }
         } else {
             // Handle error response
             const data = await response.json();

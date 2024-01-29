@@ -69,7 +69,7 @@ function renderOrderSummary(orderData) {
     // Create the content for the list group item
     const content = `
       <div class="d-flex w-100 justify-content-between">
-        <img src="${orderItem.product.image1_url}" alt="${orderItem.product.name}" class="order-item-image">
+    
         <h5 class="mb-1">${orderItem.product.name}</h5>
         <p class="mb-1">Price: $${orderItem.orderItem.price_at_purchase}</p>
         <select class="custom-select quantity-dropdown" data-orderitemid="${orderItem.orderItem.id}">

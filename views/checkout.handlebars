@@ -143,7 +143,7 @@
               <div class="d-flex w-100 justify-content-between">
                 <img src="{{ this.product.image1_url }}" alt="{{ this.product.name }}" class="order-item-image">
                 <h5 class="mb-1">{{ this.product.name }}</h5>
-                <p class="mb-1">Price: ${{ this.product.price }}</p>
+                <p class="mb-1">Price: ${{ this.price_at_purchase }}</p>
                 <select class="custom-select quantity-dropdown">
                   {{#each options}}
                     <option value="{{ this }}" {{#ifCond ../quantity this}}selected{{/ifCond}}>{{ this }}</option>

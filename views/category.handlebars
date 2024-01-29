@@ -25,9 +25,9 @@
 </div> --}}
 
 <h2>{{this.id}}</h2>
-<div class="products-container" style="display: flex; flex-wrap: wrap; max-width: 100%; overflow-x: auto;">
+<div class="products-container" style="display: flex; flex-wrap: wrap; max-width: 80wv; background-color: #fff; overflow-x: auto; margin: 20px; padding: 0 4vw; justify-content: space-between">
   {{#each products}}
-    <div class="card mb-3" style="flex: 0 0 600px; margin: 20px;">
+    <div class="card mb-3" style="flex: 0 0 400px; margin: 20px; border: 1px solid #ddd; text-align: center;">
       <img src="{{this.image1_url}}" class="card-img-top" alt="{{this.name}}" style="object-fit: cover; width: 100%; height: 300px;">
       <div class="card-body">
          <h3 class="card-title"><a href="/api/products/{{this.id}}">{{this.name}}</a></h3>

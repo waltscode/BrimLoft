@@ -58,12 +58,11 @@ router.post('/signup', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      // Redirect to the profile page after successful registration
-      res.redirect('/profile');
+      res.status(200).json(userData);
     });
   } catch (err) {
-    // Handle errors, potentially send back to a signup page with an error message
-    res.status(400).json(err);
+    console.error('Error during signup:', err); 
+    res.status(400).json({ error: 'An error occurred during user creation' });
   }
 });
 
@@ -113,7 +112,7 @@ router.post('/login', async (req, res) => {
     const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      return res.status(400).json({ message: 'Incorrect email or password, please try again' });
+      return res.status(400).json({ message: 'Incorrect username or password, please try again' });
     }
 
     req.session.user_id = userData.id;
@@ -145,25 +144,6 @@ router.post('/logout', (req, res) => {
     });
   } else {
     res.status(404).end();
-  }
-});
-
-// // A route that can be used to check the status of a user based on the presence of the session cookie from the client side.
-// router.get('/status', (req, res) => {
-//   console.log(req.session);
-//   const isAuthenticated = !!req.session.logged_in;
-//   res.json({ isAuthenticated });
-// });
-
-// Check if a user is logged in
-router.get('/check-login', (req, res) => {
-  // Check if the user information exists in the session
-  if (req.session.user) {
-    // User is logged in
-    res.json({ loggedIn: true, user: req.session.user_id });
-  } else {
-    // User is not logged in
-    res.json({ loggedIn: false });
   }
 });
 

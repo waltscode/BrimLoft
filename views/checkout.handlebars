@@ -30,7 +30,7 @@
   <button type="submit" class="btn">Place Order</button>
 </form> --}}
 
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -38,8 +38,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
-    <!-- Add any additional styles or meta tags as needed -->
-    <style>
+    <!-- Add any additional styles or meta tags as needed --> --}}
+    {{!-- <style>
       body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin: 0px;
@@ -68,7 +68,7 @@
     #name-row {
       display: inline;
     }
-  </style>
+  {{!-- </style> --}}
 </head>
 <body>
   <br>
@@ -270,26 +270,26 @@
         <div class="list-group-item">
           <div class="d-flex w-100 justify-content-between">
             <p class="mb-1">Subtotal:</p>
-            <span>${{ subtotal }}</span>
+            <span id="subtotal">${{ subtotal }}</span>
           </div>
         </div>
         <div class="list-group-item">
           <div class="d-flex w-100 justify-content-between">
             <p class="mb-1">Shipping:</p>
-            <span>${{ shippingCost }}</span> 
+            <span id="shippingCost">${{ shippingCost }}</span> 
           </div>
         </div>
         <div class="list-group-item">
           <div class="d-flex w-100 justify-content-between">
             <p class="mb-1">Taxes:</p>
-            <span>${{ orderItemsTaxes }}</span>
+            <span id="orderItemTaxes">${{ orderItemsTaxes }}</span>
           </div>
         </div>
         <!-- Total -->
         <div class="list-group-item">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">Total:</h5>
-            <span>${{ orderTotal }}</span>
+            <span id="orderTotal">${{ orderTotal }}</span>
           </div>
         </div>
         <!-- Confirm Order Button -->
@@ -299,9 +299,201 @@
       </div>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="/js/checkout.js"></script>
 </body>
 
-</html>
+</html> --}}
+
+
+<body>
+  <br>
+  <div class="container checkout page">
+    <div class="row">
+      <!-- Left Column -->
+      <div class="col-md-5">
+        <h3>Contact Information</h3>
+        <!-- Email Address Input -->
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email">
+        </div>
+
+        <h3>Shipping Information</h3>
+
+        <!-- First Name and Last Name Inputs -->
+        <div class="form-row" id="name-row">
+          <div class="form-group col-md-5">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" placeholder="First Name">
+          </div>
+          <div class="form-group col-md-1"></div> <!-- Empty column for gutter -->
+          <div class="form-group col-md-5">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+          </div>
+        </div>
+
+        <!-- Additional Shipping Information Fields -->
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" class="form-control" id="company" placeholder="Company">
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" class="form-control" id="address" placeholder="Address">
+        </div>
+        <div class="form-group">
+          <label for="apartment">Apartment, suite, etc.</label>
+          <input type="text" class="form-control" id="apartment" placeholder="Apartment, suite, etc.">
+        </div>
+
+        <!-- City and Country Inputs -->
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="city">City</label>
+            <input type="text" class="form-control" id="city" placeholder="City">
+          </div>
+          <div class="form-group col-md-1"></div> <!-- Empty column for gutter -->
+          <div class="form-group col-md-5">
+            <label for="country">Country</label>
+            <select class="form-control" id="country">
+              <!-- ... (options) ... -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Province/State and Postal Code Inputs -->
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="province">Province/State</label>
+            <select class="form-control" id="province">
+              <!-- ... (options) ... -->
+            </select>
+          </div>
+          <div class="form-group col-md-1"></div> <!-- Empty column for gutter -->
+          <div class="form-group col-md-5">
+            <label for="postalCode">Postal Code</label>
+            <input type="text" class="form-control" id="postalCode" placeholder="Postal Code">
+          </div>
+        </div>
+
+        <hr>
+
+        <h3>Shipping Options</h3>
+        <!-- Shipping Options Checkboxes -->
+        <div class="card">
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="shippingWithinCanada" checked>
+              <label class="form-check-label" for="shippingWithinCanada">Shipping within Canada $9.99</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="globalExpressShipping">
+              <label class="form-check-label" for="globalExpressShipping">Global Express Shipping $19.99</label>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- Payment Information -->
+        <h3>Payment Options</h3>
+
+        <!-- Payment Options Radio Buttons -->
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="paymentOption" id="creditCard" checked>
+          <label class="form-check-label" for="creditCard">Credit Card</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="paymentOption" id="paypal">
+          <label class="form-check-label" for="paypal">Paypal</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="paymentOption" id="eTransfer">
+          <label class="form-check-label" for="eTransfer">Etransfer</label>
+        </div>
+
+        <!-- Card Number and Name on Card Inputs -->
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="cardNumber">Card Number</label>
+            <input type="text" class="form-control" id="cardNumber" placeholder="Card Number">
+          </div>
+          <div class="form-group col-md-12">
+            <label for="nameOnCard">Name on Card</label>
+            <input type="text" class="form-control" id="nameOnCard" placeholder="Name on Card">
+          </div>
+        </div>
+
+        <!-- Expiration Date and CVC Inputs (inline) -->
+        <div class="form-row">
+          <div class="form-group col-md-7">
+            <label for="expirationDate">Expiration Date MM/YY</label>
+            <input type="text" class="form-control" id="expirationDate" placeholder="MM/YY">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="cvc">CVC</label>
+            <input type="text" class="form-control" id="cvc" placeholder="CVC">
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Right Column -->
+      <div class="col-md-5">
+        <h3>Order Summary</h3>
+        <!-- List Group for Order Items -->
+        <div class="list-group">
+          {{#each orderItems}}
+            <div class="list-group-item">
+              <div class="d-flex w-100 justify-content-between">
+                <img src="{{ this.product.image1_url }}" alt="{{ this.product.name }}" class="order-item-image">
+                <h5 class="mb-1">{{ this.product.name }}</h5>
+                <p class="mb-1">Price: ${{ this.product.price }}</p>
+                <select class="custom-select quantity-dropdown">
+                  {{#each options}}
+                    <option value="{{ this }}" {{#ifCond ../quantity this}}selected{{/ifCond}}>{{ this }}</option>
+                  {{/each}}
+                </select>
+              </div>
+            </div>
+          {{/each}}
+          <!-- Subtotal, Shipping, Taxes -->
+          <div class="list-group-item">
+            <div class="d-flex w-100 justify-content-between">
+              <p class="mb-1">Subtotal:</p>
+              <span id="subtotal">${{ subtotal }}</span>
+            </div>
+          </div>
+          <div class="list-group-item">
+            <div class="d-flex w-100 justify-content-between">
+              <p class="mb-1">Shipping:</p>
+              <span id="shippingCost">${{ shippingCost }}</span> 
+            </div>
+          </div>
+          <div class="list-group-item">
+            <div class="d-flex w-100 justify-content-between">
+              <p class="mb-1">Taxes:</p>
+              <span id="orderItemTaxes">${{ orderItemsTaxes }}</span>
+            </div>
+          </div>
+          <!-- Total -->
+          <div class="list-group-item">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Total:</h5>
+              <span id="orderTotal">${{ orderTotal }}</span>
+            </div>
+          </div>
+          <!-- Confirm Order Button -->
+          <div class="list-group-item">
+            <button class="btn btn-primary" onclick="confirmOrder()">Confirm Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
 
 
 

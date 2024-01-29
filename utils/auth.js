@@ -9,14 +9,14 @@ const withAuth = async (req, res, next) => {
 
   // If the user is not logged in, redirect the request to the login route
   if (!req.session.logged_in) {
-    res.redirect('/login');
+    res.redirect('/signup-login');
   } else {
     try {
       // Fetch user_id from the session
       const user_id = req.session.user_id;
 
       if (!user_id) {
-        res.redirect('/login'); // Redirect if user not found
+        res.redirect('/signup-login'); // Redirect if user not found
       } else {
         req.user_id = user_id; // Attach user_id to the request object
         next();

@@ -1,18 +1,33 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 const withAuth = require('../../utils/auth');
+const { signup, login, logout, getUserProfile } = require('../userController');
 
 // Route to get all users
 // GET http://localhost:3001/api/users
 // Tested by KW. Works.
 // After testing I put a restriction on this route so that only managers can user it. If you want to duplicate passing test remove withAuth from params and if block from within try block. I think it will work but can't test till user auth is set up with a way to show insomnia I am logged in.  Gave manager status to Tarique (user id 16, first_name: "Tarique", last_name: "Moatar", default_address: "7482 Black Walnut Terrace\nMississauga, ON\nL5N 8B1", username: "TariqueM", password: "password1023", email: "tmoatar114@gmail.com)
+// router.get('/', withAuth, async (req, res) => {
+//   try {
+//     // Additional authorization check based on user role, because we don't want everyone who is logged in to be able to access a list of all site users together with emails and addresses only managers who need to ship the merchandize out. The role is a field in the user Model.
+//     if (req.user.role !== 'manager') {
+//       // If the user is not a manager, deny access
+//       return res.status(403).json({ message: 'Access forbidden' });
+//     }
+//     const allUsers = await User.findAll();
+//     res.status(200).json(allUsers);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+
+// Route to get all users (restricted to managers only)
 router.get('/', withAuth, async (req, res) => {
+  if (req.session.role !== 'manager') { // Make sure you have a way to set `role` in the session when user logs in
+    return res.status(403).json({ message: 'Access forbidden' });
+  }
   try {
-    // Additional authorization check based on user role, because we don't want everyone who is logged in to be able to access a list of all site users together with emails and addresses only managers who need to ship the merchandize out. The role is a field in the user Model.
-    if (req.user.role !== 'manager') {
-      // If the user is not a manager, deny access
-      return res.status(403).json({ message: 'Access forbidden' });
-    }
     const allUsers = await User.findAll();
     res.status(200).json(allUsers);
   } catch (err) {
@@ -20,31 +35,37 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
+
 // Route to get a user by ID
 // GET http://localhost:3001/api/users/5
 // Tested by KW. Works.
 // After testing I put a restriction on this route so that only managers can user it. If you want to duplicate passing test remove withAuth from params and if block from within try block. I think it will work but can't test till user auth is set up with a way to show insomnia I am logged in.  Gave manager status to Tarique (user id 16, first_name: "Tarique", last_name: "Moatar", default_address: "7482 Black Walnut Terrace\nMississauga, ON\nL5N 8B1", username: "TariqueM", password: "password1023", email: "tmoatar114@gmail.com) 
-router.get('/:id', async (req, res) => {
-  try {
-    // Additional authorization check based on user role
-    if (req.user.role !== 'manager') {
-      // If the user is not a manager, deny access
-      return res.status(403).json({ message: 'Access forbidden' });
-    }
+// router.get('/:id', withAuth, async (req, res) => {
+//   try {
+//     // Additional authorization check based on user role
+//     if (req.user.role !== 'manager') {
+//       // If the user is not a manager, deny access
+//       return res.status(403).json({ message: 'Access forbidden' });
+//     }
 
+// Route to get a user by ID (restricted to managers only)
+router.get('/:id', withAuth, async (req, res) => {
+  if (req.session.role !== 'manager') { // Make sure you have a way to set `role` in the session when user logs in
+    return res.status(403).json({ message: 'Access forbidden' });
+  }
+  try {
     const userId = req.params.id;
     const userById = await User.findByPk(userId);
-
     if (!userById) {
-      res.status(404).json({ message: 'User not found' });
-      return;
+      return res.status(404).json({ message: 'User not found' });
     }
-
     res.status(200).json(userById);
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+   
 
 
 //Route for creating a new user (signup).
@@ -61,9 +82,13 @@ router.post('/signup', async (req, res) => {
       // Redirect to the profile page after successful registration
       res.redirect('/profile');
     });
-  } catch (err) {
-    // Handle errors, potentially send back to a signup page with an error message
-    res.status(400).json(err);
+  } catch (error) {
+    if (error.name === 'SequelizeUniqueConstraintError') {
+      // Handle the unique constraint error
+      return res.status(400).json({ message: 'Username already taken. Please choose a different username.' });
+    }
+    // Handle other types of errors
+    return res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 
@@ -138,6 +163,7 @@ router.post('/login', async (req, res) => {
 // User logout route.  http://localhost:3001/api/users/logout . No req.body required.
 // Tested by KW.  At first it didn't work. Works now. Issue was because the cookie was not being passed. I had set the cookie secure setting to true in server.js, and it should be changed back to true before deployment, but for testing with Insomnia, which uses http, not https, this is what prevented the cookie being established and remembered. Works fine now with change in server.js to secure: false.
 
+
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
@@ -148,6 +174,6 @@ router.post('/logout', (req, res) => {
   }
 });
 
-
+router.get('/profile/:id', withAuth, getUserProfile);
 
 module.exports = router;

@@ -13,9 +13,11 @@ const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
+const userRoutes = require('./controllers/api/userRoutes');
 const app = express();
 const PORT = process.env.PORT || 3001;
+const User = require('./models/User');
+const userController = require('./controllers/userController')
 
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({ helpers,
@@ -82,8 +84,20 @@ app.get('/profile', async (req, res) => {
   }
 });
 
+app.post('/login', userController.login);
+
+// POST route for user signup
+app.post('/signup', userController.signup);
+
+app.use('/api/users', userRoutes);
 //This crucial line leverages everything in the controllers folder which handles routing and makes the API functional to respond when endpoints are hit
 app.use(routes);
+
+app.use((err, req, res, next) => {
+  console.error('Global Error Handler:', err);
+  res.status(500).json({ message: 'Internal Server Error', error: err.toString() });
+});
+
 
 // Syncs with the database using sequelize and starts the server. Setting force to false is best for production because it prevents accidental data loss when the server is terminated. 
 sequelize.sync({ force: false }).then(() => {

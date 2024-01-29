@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.user-details {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-details img {
+    max-width: 100px;
+    border-radius: 50%;
+}
+
+.user-details h2 {
+    margin-top: 0;
+}
+
+.user-details p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.orders-list, .reviews-list {
+    list-style: none;
+    padding: 0;
+}
+
+.orders-list li, .reviews-list li {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-navigation {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-navigation a {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.profile-navigation a.logout-button {
+    background-color: #dc3545;
+}
+
+.profile-navigation a:hover {
+    opacity: 0.9;
+}

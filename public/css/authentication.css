@@ -14,7 +14,7 @@ body {
 	border-radius: 10px;
 	margin: 185px 0;
 	font-family: 'Segoe UI', sans-serif;
-	color: #9e5df2;
+	color: #584078;
 	font-weight: 700;
 	font-size: 16px;
 	position: relative;
@@ -33,7 +33,7 @@ body {
 	text-align: center;
 	position: relative;
 	padding: 16px 0 13px;
-	margin-bottom: 55px;
+	margin-bottom: 35px;
   }
   .form-v9-content .form-detail h2::after {
 	background: #9e5df2;
@@ -59,7 +59,7 @@ body {
 	text-align: center;
   }
   .form-v9-content .form-detail .input-text {
-	margin-bottom: 45px;
+	margin-bottom: 35px;
   }
   .form-v9-content .form-detail input {
 	width: 100%;
@@ -76,7 +76,7 @@ body {
 	border: 2px solid #999;
   }
   .form-v9-content .form-detail .register {
-	background: #9e5df2;
+	background: #624588;
 	border-radius: 25px;
 	width: 250px;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -95,19 +95,19 @@ body {
 	padding: 14px;
   }
   input::-webkit-input-placeholder {
-	color: #9e5df2;
+	color: #5d447d;
 	font-size: 16px;
   }
   input::-moz-placeholder {
-	color: #9e5df2;
+	color: #5f477e;
 	font-size: 16px;
   }
   input:-ms-input-placeholder {
-	color: #9e5df2;
+	color: #584372;
 	font-size: 16px;
   }
   input:-moz-placeholder {
-	color: #9e5df2;
+	color: #564171;
 	font-size: 16px;
   }
   

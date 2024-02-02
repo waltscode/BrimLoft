@@ -41,12 +41,17 @@ const hbs = exphbs.create({ helpers,
 //   })
 // };
 const sess = {
-  secret: 'Super secret secret',
-  cookie: {},
+  secret: process.env.SESSION_SECRET || 'secret',
+  cookie: {
+    maxAge: 300000,
+    httpOnly: false,
+    secure: true,
+    sameSite: 'strict',
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
-      db: sequelize
+    db: sequelize
   })
 };
 

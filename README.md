@@ -73,7 +73,7 @@ BrimLoft is a dynamic web application designed for hat enthusiasts. It offers us
 
 ## Deployment
 
-- Heroku URL: https://BrimLoft.herokuapp.com/
+- Heroku URL: https://protected-gorge-42703-db942224a3bb.herokuapp.com/
 
 - GitHub URL: https:// git@github.com:waltscode/Group6_Project_Hats.git
 

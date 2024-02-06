@@ -64,7 +64,6 @@ BrimLoft is a dynamic web application designed for hat enthusiasts. It offers us
 - Utilize the user authentication feature to create a personal account, log in, and manage your orders and profile.
 
 
-
 ## Testing
 
 - Ensure all dependencies are installed by running npm install before conducting tests.
@@ -75,26 +74,32 @@ BrimLoft is a dynamic web application designed for hat enthusiasts. It offers us
 
 - Heroku URL: https://protected-gorge-42703-db942224a3bb.herokuapp.com/
 
-- GitHub URL: https:// git@github.com:waltscode/Group6_Project_Hats.git
+- GitHub URL: https:// https://github.com/waltscode/BrimLoft
 
 ## References
+
+- https://sequelize.org/docs/v6/core-concepts/assocs/
+- https://www.npmjs.com/package/express-handlebars
+- https://expressjs.com/en/guide/using-middleware.html
+- https://coding-boot-camp.github.io/full-stack/heroku/deploy-with-heroku-and-mysql
+- https://www.npmjs.com/package/bcrypt
+- https://expressjs.com/en/guide/routing.html#route-paths
+- https://expressjs.com/en/guide/routing.html#express-router
 
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](link to CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+- Contributions to E-commerce-Back-End are welcome! If you have suggestions for improvement or bug fixes, please open an issue or submit a pull request. Ensure your code adheres to the existing style for consistency. Thank you for your interest in enhancing this employee management tool.
 
-## Versioning
-We use SemVer for versioning.
 
 ## Authors
 
 - Developed by a group of passionate developers committed to creating efficient and user-friendly software solutions.
-Walters John
-Lee Nicholas
-Morozan Stanislav
-Wubbenhorst Karla
-Singh Sanyam
+ John Walters
+ Nicholas Lee
+ Stanislav Morozan
+ Karla Wubbenhorst
+ Sanyam Singh 
 
 
 ## License
